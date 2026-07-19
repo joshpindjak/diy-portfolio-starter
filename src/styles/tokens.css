@@ -1,0 +1,106 @@
+/* =========================================================
+   BASE LAYER
+   Raw values. Your unlabelled palette.
+   Do not reference these directly in components.
+   ========================================================= */
+:root {
+  /* Neutral scale (1 = lightest, 12 = darkest).
+     Regenerate your own at radix-ui.com/colors */
+  --gray-1: #fcfcfc;
+  --gray-2: #f9f9f9;
+  --gray-3: #f0f0f0;
+  --gray-4: #e8e8e8;
+  --gray-5: #e0e0e0;
+  --gray-6: #d9d9d9;
+  --gray-7: #cecece;
+  --gray-8: #bbbbbb;
+  --gray-9: #8d8d8d;
+  --gray-10: #808080;
+  --gray-11: #646464;
+  --gray-12: #202020;
+
+  /* Accent scale. Swap these for your own colour in Loop 6.
+     Step 9 is the solid accent, 10 its hover, 11 accessible text. */
+  --accent-1: #fbfdff;
+  --accent-2: #f4faff;
+  --accent-3: #e6f4fe;
+  --accent-4: #d5efff;
+  --accent-5: #c2e5ff;
+  --accent-6: #acd8fc;
+  --accent-7: #8ec8f6;
+  --accent-8: #5eb1ef;
+  --accent-9: #0090ff;
+  --accent-10: #0588f0;
+  --accent-11: #0d74ce;
+  --accent-12: #113264;
+
+  /* Raw size scale, used for spacing and layout */
+  --size-1: 0.25rem;
+  --size-2: 0.5rem;
+  --size-3: 1rem;
+  --size-4: 1.5rem;
+  --size-5: 2.5rem;
+  --size-6: 4rem;
+  --size-7: 6rem;
+
+  /* Raw radii */
+  --radius-1: 0.25rem;
+  --radius-2: 0.5rem;
+  --radius-3: 0.8rem;
+
+  /* Font families. System fonts by default so nothing has to load.
+     Add your own webfont here later, then point --font-sans at it. */
+  --font-sans: system-ui, -apple-system, sans-serif;
+  --font-serif: Georgia, 'Times New Roman', serif;
+  --font-mono: ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* Raw type scale (1 = smallest, 5 = largest) */
+  --font-size-1: 0.875rem;
+  --font-size-2: 1rem;
+  --font-size-3: 1.25rem;
+  --font-size-4: 1.75rem;
+  --font-size-5: 2.5rem;
+}
+
+/* =========================================================
+   SEMANTIC LAYER
+   Raw values given a job. This is what components use.
+   Change these in Loop 6 and the whole site follows.
+   ========================================================= */
+:root {
+  /* Colour */
+  --color-bg: var(--gray-1);
+  --color-surface: var(--gray-2);
+  --color-border: var(--gray-6);
+  --color-text: var(--gray-12);
+  --color-text-muted: var(--gray-11);
+  --color-accent: var(--accent-9);
+  --color-accent-hover: var(--accent-10);
+  --color-link: var(--color-accent);
+
+  /* Type */
+  --font-body: var(--font-sans);
+  --font-heading: var(--font-sans);
+  --font-code: var(--font-mono);
+
+  /* Type sizes. These are what components and pages use. */
+  --text-sm: var(--font-size-1);
+  --text-base: var(--font-size-2);
+  --text-lg: var(--font-size-3);
+  --text-xl: var(--font-size-4);
+  --text-2xl: var(--font-size-5);
+
+  /* Spacing */
+  --space-xs: var(--size-1);
+  --space-sm: var(--size-2);
+  --space-md: var(--size-3);
+  --space-lg: var(--size-4);
+  --space-xl: var(--size-5);
+  --space-2xl: var(--size-6);
+
+  /* Radius */
+  --radius: var(--radius-2);
+
+  /* Content width */
+  --content-width: 42rem;
+}

@@ -1,0 +1,33 @@
+---
+description: Two-layer design token system. Always style with semantic tokens, never hard-coded raw values.
+alwaysApply: true
+---
+
+# Design Tokens
+
+This site is styled with a two-layer design token system defined in `src/styles/tokens.css`. Every visual value in the site comes from a token. This is what keeps the site consistent and makes it look designed instead of defaulted. Follow these rules whenever you write or edit any styling.
+
+## The two layers
+
+**Base layer:** Raw values with no meaning attached: a 12-step neutral scale, a 12-step accent scale, a raw size scale, radii, font families, and a raw type scale. These are named like `--gray-12`, `--accent-9`, `--size-3`, `--font-size-2`.
+
+**Semantic layer:** Those raw values given a job: `--color-text`, `--color-bg`, `--color-border`, `--color-accent`, `--font-body`, `--text-base`, `--space-md`, `--radius`. Each semantic token points at a base token.
+
+## The rules, in order of importance
+
+1. **Never hard-code a raw value:** No hex colours, no pixel or rem literals for spacing or type, no font-family strings in a component or a page. If you catch yourself typing `#333` or `16px` or `1.5rem`, stop and use a token.
+2. **Components and pages use the semantic layer only:** Reference `var(--color-text)`, not `var(--gray-12)`. Reference `var(--text-base)`, not `var(--font-size-2)`. The semantic name is the contract. The base value behind it can change.
+3. **If no token fits, add one:** When a value is genuinely needed that no semantic token covers, add a new semantic token (pointing at a base value) rather than inlining a one-off. Keep the system complete.
+4. **Respond to aesthetic direction by changing tokens, not components:** When the user says "warmer", "more editorial", "tighter", "darker", change the semantic tokens (or the base values they point at). The whole site should shift from one edit. Never chase an aesthetic by editing individual components.
+
+## When building the About page or any single page
+
+Even before components exist, style the page with tokens. A heading colour is `var(--color-text)`. Padding is `var(--space-lg)`. A link is `var(--color-link)`. This is what makes the page "part of the system", so that when the user customises tokens later, the page updates for free. Do not hand-style a page with raw values on the grounds that it's "just a quick page". There is no quick exception to the token rule.
+
+## Keep the palette and scale tight
+
+A small, intentional set of colours and a limited type scale read as considered. Sprawl reads as messy. Use the accent sparingly, for links, active states, and light emphasis, not everywhere. Restraint is the look.
+
+## Why this matters
+
+AI-built sites look generic because the model reaches for default values with no system behind them. The tokens are the system. Point everything at the semantic layer, never hard-code a raw value, and the site looks like a person designed it. Changing one token then restyles everything at once, which is the entire reason the site is built this way.

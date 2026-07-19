@@ -1,0 +1,541 @@
+# Lesson Plan
+
+**Build and ship your own portfolio site.** One day, from a blank project to a live site on your own domain, styled with a design system that's actually yours.
+
+This is the full plan for the day and a reference you can keep. Every part of the workshop in order, and every terminal command you'll run, what it does, and when. Come back to it whenever you forget a step. It lives in your project repo and online.
+
+You don't need to memorise anything.
+
+---
+
+## What you're building, and why this way
+
+Your own portfolio site. Coded, not templated. Built on Astro, styled with design tokens you set, deployed on Vercel under your own domain by the end of the day.
+
+You'll start from a near-blank starter repo: a working Astro project with a "Hello world" page, a design system of example tokens already wired up, and nothing else. You build the components and pages yourself. That's deliberate. Building the pieces is how you understand them, and how you'll be able to change anything later without fear.
+
+**A word on the technical parts.** Some of today is command line, Git, and deployment. If that sounds like the vegetables before dessert, here's why it isn't.
+
+Product and web design rests on understanding how the thing you're designing is actually built. If you don't know the structure, you design against invisible constraints and hand off work that doesn't survive contact with production. Learning to see past your own toolset is the whole skill. If you don't want that, Squarespace and Framer are genuinely fine, and you should use them.
+
+You're learning a new muscle today, not a checklist. I'll give you skill files that let the agent handle the fiddly parts, but I'll show you what's underneath them first. Training wheels you can take off, not a black box.
+
+**We work in loops.** Every block ends with something real, live, and shareable. You'll have a page on the internet before lunch.
+
+---
+
+## Before the day: setup
+
+Please get through this before you arrive. We do a setup check first thing, but every minute installing is a minute not building. If anything won't cooperate, message me ahead of time.
+
+Open your terminal to run these. On **Mac** that's the Terminal app. On **Windows**, use PowerShell (search for it in the Start menu).
+
+### 1. Cursor
+
+Install Cursor and sign in with a paid plan. This is the editor and AI agent we use all day.
+
+### 2. Git
+
+**Mac.** Git usually comes with the developer tools. Check:
+
+```bash
+git --version
+```
+
+If it prints a version, you're set. If instead a dialog pops up offering to install the "command line developer tools", click Install and let it run. That's Git arriving. Then check again.
+
+**Windows.** Git is not installed by default. Check first:
+
+```powershell
+git --version
+```
+
+If it's missing, install it:
+
+```powershell
+winget install --id Git.Git
+```
+
+Then **close and reopen PowerShell** and run `git --version` again. (`winget` is built into Windows 10 and 11, so there's nothing to install first.)
+
+### 3. Node
+
+Node runs your site on your laptop. Check whether you have it:
+
+```bash
+node --version
+```
+
+If it prints `v18` or higher, you're done. If it says "command not found", install it.
+
+**Everyone, the simple way:** go to [nodejs.org](https://nodejs.org), download the **LTS** version, run the installer, accept the defaults. Close and reopen your terminal, then run `node --version` to confirm.
+
+**Or from the terminal.** Mac: `brew install node` (see Homebrew below). Windows: `winget install OpenJS.NodeJS.LTS`.
+
+### 4. Homebrew (Mac only)
+
+Homebrew installs other tools from the terminal. **It does not come with macOS**, so you'll likely need to install it. Check:
+
+```bash
+brew --version
+```
+
+If it says "command not found", paste this single line into your terminal and press enter:
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+It takes a few minutes and will ask for your Mac password. When it finishes it usually prints two extra commands under a heading like "Next steps". **Run those two lines.** They're what makes `brew` available in your terminal. Then confirm with `brew --version`.
+
+*Windows users: skip this. You have `winget` already.*
+
+### 5. GitHub CLI
+
+This lets your terminal talk to GitHub without wrestling with passwords. Check:
+
+```bash
+gh --version
+```
+
+If it's missing:
+
+- **Mac:** `brew install gh`
+- **Windows:** `winget install --id GitHub.cli`
+
+Close and reopen your terminal, then confirm with `gh --version`.
+
+### 6. Accounts
+
+- A **GitHub account** (free). Where your code lives.
+- A **Vercel account** (free). Sign up *with* your GitHub account. This is what puts your site online.
+
+### 7. Bring your raw material
+
+- **Your content.** Copy, images, case study material, your work history. Rough is fine.
+- **Your taste.** A moodboard, a few sites you love, a favourite accent colour. Come with opinions. We go deep on this after lunch.
+- **Laptop and charger.**
+
+> **Stuck on any of this?** Don't burn your evening on it. Message me, and if it's still broken on the day we'll fix it in the first half hour.
+
+---
+
+## How the day flows
+
+| Time | Loop | You'll finish with |
+|------|------|--------------------|
+| 09:00 – 09:30 | Setup check | A working machine |
+| 09:30 – 10:00 | Get the starter running | The project on your laptop |
+| 10:00 – 10:20 | **Activity 1:** Meet your design system | The tokens that will drive everything |
+| 10:20 – 11:00 | **Activity 2:** Build your About page | A page you designed, on the tokens |
+| 11:00 – 11:15 | Break | |
+| 11:15 – 11:50 | **Loop 3:** Ship it | That page live on the internet |
+| 11:50 – 12:00 | Debrief | Why one page doesn't scale |
+| 12:00 – 13:00 | Lunch | |
+| 13:00 – 13:45 | **Loop 4:** Into components | Reusable nav, footer, and a layout |
+| 13:45 – 14:45 | **Loop 5:** Content and work | A homepage and a case study template |
+| 14:45 – 15:00 | Break | |
+| 15:00 – 15:40 | **Loop 6:** Make it yours | Your own design system |
+| 15:40 – 16:00 | **Loop 7:** Ship and share | A live site on your domain |
+
+---
+
+# Morning
+
+## 09:00 – 09:30: Setup check
+
+Quick hellos, then we make sure your machine works before we teach anything.
+
+Tell Git who you are. Every save gets tagged with your name and email. Do this once and never again.
+
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
+```
+
+Sign in to GitHub from the terminal. GitHub doesn't take passwords in the terminal anymore, so the CLI opens a browser, you click Authorize, and you're in.
+
+```bash
+gh auth login
+```
+
+Choose GitHub.com, HTTPS, and authenticate through the browser when offered.
+
+## 09:30 – 10:00: Get the starter running, and meet your two modes
+
+**Get the project.** Go to the template repo on GitHub and click **"Use this template"** to make your own copy. Then bring it to your laptop:
+
+```bash
+git clone https://github.com/your-username/your-portfolio.git
+cd your-portfolio
+npm install
+npm run dev
+```
+
+`git clone` copies the project down. `cd` moves your terminal into the folder. `npm install` downloads what the project needs, once. `npm run dev` runs the site locally at an address like `http://localhost:4321`. Open it, see "Hello world", and leave it running all day. It updates as you edit.
+
+### The two ways to work in Cursor
+
+You'll use both today. Knowing which to reach for is half the skill.
+
+**The Agent window.** You describe what you want and it writes and edits code across files. Its best feature is **checkpoints**: automatic snapshots taken before the agent changes anything, so if it goes off the rails you can restore back to a point in the conversation and try again. Use it for generating, exploring, and anything you'd rather not type by hand.
+
+**The editor and terminal.** You read the code, make the edits, run the commands. Use it when you want to know exactly what's happening, which is most of the time when you're learning.
+
+Three things about checkpoints that matter, straight from Cursor's docs:
+
+- **Checkpoints are not version control.** They're temporary, cleaned up after your session.
+- **They only track the agent's changes.** Anything you type by hand isn't captured.
+- **Git is the permanent history.**
+
+So they're a scratch-space undo button, not a substitute for saving your work. Good habit: commit to Git *before* you hand the agent a big task. Then if the checkpoint restore misbehaves, you still have a clean point to return to. This is exactly why we learn Git today rather than trusting the tool to remember for us.
+
+Your starter repo also includes **skill files**: instructions the agent reads so it produces consistent, token-based code instead of generic slop. They'll carry you through the fiddly parts. I'll show you what each one is doing so they never feel like magic.
+
+## 10:00 – 10:20: Activity 1: Meet your design system
+
+Before you build anything, let's look at the design system that's going to drive it. This will feel familiar, because it's the same idea as variables and styles in Figma.
+
+Open `src/styles/tokens.css`. It has two layers.
+
+**The base layer** is your raw values. A 12-step colour scale, raw sizes, font families. Think of it as your unlabelled palette in Figma before you've decided what anything is for.
+
+```css
+:root {
+  /* base: raw values */
+  --gray-1: #fcfcfc;
+  --gray-12: #202020;
+  --accent-9: #0090ff;
+  --font-sans: system-ui, -apple-system, sans-serif;
+  --size-3: 1rem;
+  --font-size-2: 1rem;
+}
+```
+
+**The semantic layer** gives those raw values a job. Not "gray 12", but "this is the text colour". Not "size 3", but "this is medium spacing". This is the layer your components will actually use.
+
+```css
+:root {
+  /* semantic: values with meaning */
+  --color-text: var(--gray-12);
+  --color-bg: var(--gray-1);
+  --color-accent: var(--accent-9);
+  --font-body: var(--font-sans);
+  --text-base: var(--font-size-2);
+  --space-md: var(--size-3);
+}
+```
+
+**The one rule that makes this work:** components reference the semantic layer, never the raw base values. Exactly like binding a Figma component to a variable instead of pasting a raw hex. Do that, and changing one token restyles the whole site at once.
+
+Here's the good news for right now: the starter already has sensible example tokens. **You don't need to touch them yet.** Build on them as they are. This afternoon, in Loop 6, you'll swap in your own colours, fonts, and spacing, and watch everything you've built update in one move. That moment is the whole reason we set it up this way. For now, just know the system is there, and that everything you build should point at it.
+
+## 10:20 – 11:00: Activity 2: Build your About page
+
+Time to make something, and to see the design system working. We're building one page: **your About page, a digital version of your resume.** For now this is your whole site. We'll give it a proper home page and move this to `/about` this afternoon.
+
+Open `src/pages/index.astro`, clear out the "Hello world", and build your About page right there in that one file. No components yet, no fancy structure. Who you are, what you've worked on, how to reach you. Use the agent, try things, have fun with it.
+
+The one thing that matters: **style it with the tokens, not with raw values.** Reach for `var(--color-text)` and `var(--space-md)`, not a hand-typed hex or pixel value. The skill file for tokens keeps the agent honest about this, so if you're prompting, it'll follow the rule. This is what makes your page "part of the system": when you change the tokens later, this page comes along for free.
+
+Don't over-polish. We rebuild this properly after lunch. Save as you go:
+
+```bash
+git status              # What have I changed?
+git add .               # Stage the changes (pack the box)
+git commit -m "Build my about page"   # Save them (seal and label the box)
+```
+
+## 11:00 – 11:15: Break
+
+## 11:15 – 11:50: Loop 3: Ship it
+
+Now we put your page on the internet, where anyone can see it.
+
+**Push your work to GitHub.**
+
+```bash
+git push
+```
+
+That sends your commits up. Your code now lives in two places: your laptop and GitHub.
+
+**Connect to Vercel.** This bit happens in the browser. Go to Vercel and import the repo you created. Vercel recognises it's an Astro project and fills in the settings. Accept the defaults and deploy. Within a minute you get a live URL ending in `.vercel.app`.
+
+**Here's the loop that makes everything click.** Because Vercel watches your GitHub, the moment you `git push` it rebuilds and updates your live site. There's no deploy command. You push, and it's live.
+
+Change one thing on your page and run it again:
+
+```bash
+git add .
+git commit -m "Tweak my about page"
+git push
+```
+
+Watch it go live. That's the whole game: **edit, add, commit, push.** You'll run it all day.
+
+**Share your URL.** Everyone drops their link. This is the first of several. See what other people made from the same starting point.
+
+> **If you have a domain**, we can point a staging subdomain at this, like `v2.yourdomain.com`, so you preview the new site while your old one stays up. Domains involve DNS, which can be slow. We'll set it up and it'll arrive when it arrives.
+
+> **Stuck?** This is the fiddliest stretch of the day, and it's almost always sign-in or permissions. Flag me. Nobody moves on until everyone's live.
+
+## 11:50 – 12:00: Debrief: why one page doesn't scale
+
+Look at what you've got: one page, styled on your tokens, live on the internet. Now imagine adding twelve case studies. Where does the navigation live? What happens when you change your footer? Do you really want to paste it into thirteen files?
+
+That's the problem components solve, and it's what we do first thing after lunch.
+
+Two commands worth knowing while you think about it:
+
+```bash
+git diff                    # Show the exact lines I've changed
+git log --oneline --graph   # A clean visual history of my saves
+```
+
+---
+
+# Lunch (12:00 – 13:00)
+
+Step away from the screen. If there's something you didn't want to ask in front of the group, grab me.
+
+---
+
+# Afternoon
+
+## 13:00 – 13:45: Loop 4: Into components
+
+Now the payoff for building that page by hand. We take your one page and pull the repeated parts out into reusable components, and the reason becomes obvious the moment you do it.
+
+**How an Astro project is laid out:**
+
+- **`src/pages`**: one file per page. `index.astro` is your homepage.
+- **`src/components`**: reusable pieces. Empty right now. You're about to fill it.
+- **`src/layouts`**: the shell that wraps your pages so they share a frame.
+- **`src/content`**: where your work and writing will live, as content files.
+- **`src/styles`**: your design tokens, which you already met.
+
+**Pull the shared parts out of your page:**
+
+- **Navigation.** Built once as a component, used on every page.
+- **Footer.** Same.
+- **A layout** that wraps every page so the nav and footer are automatic.
+
+Then change the navigation once and watch it update everywhere it appears. That's the moment. That's why we built the single page first, so you feel the difference.
+
+Two ideas to hold: **components** mean building a thing once and reusing it, and a portfolio is mostly **static**, meaning it's built once and served fast, which is exactly what you want.
+
+```bash
+git add .
+git commit -m "Extract nav and footer into components, add layout"
+git push
+```
+
+## 13:45 – 14:45: Loop 5: Content and work
+
+Now the site gets real. Use the agent to scaffold, and keep it consistent.
+
+**Build the work grid.** A grid of your projects. It lives on the homepage, and you can reuse it at the bottom of a case study to show "Related projects".
+
+**Build your pages:**
+
+- **Home.** A line or two about you, and your work grid. Your About content moves off the home page now and gets its own place.
+- **About.** The page you already built. Give it its own route at `/about`.
+- **Case study / project template.** One reusable page that lays out any project. Build it once and every future case study is just a new content file. **This is the most valuable thing you'll make today.**
+- **One optional page for personality.** A `/now` page showing what you're working on, or a writing page. A writing page can reuse the case study structure.
+
+**Bring your content in.** From Framer, Webflow, Squarespace, a custom site, or plain text and markdown. We're rebuilding it properly, not running an export.
+
+**How a case study is structured.** Your projects live as content files with a consistent set of fields:
+
+- **Name** of the project
+- **Client** (optional)
+- **Description.** One SEO-friendly line about what you did
+- **Year or date**
+- **Tags or category** (optional). Lets you sort and filter, and powers "Related projects"
+- Anything else the project needs
+
+The agent can set up a clean config for all of it. When you later want to add a field to every project, that's one small change in one place.
+
+**Share again.** Everyone push and drop their URL.
+
+```bash
+git add .
+git commit -m "Add work grid, homepage, and case study template"
+git push
+```
+
+## 14:45 – 15:00: Break
+
+## 15:00 – 15:40: Loop 6: Make it yours
+
+The moment we set everything up for. Until now your site has worn the example tokens. Now you make it yours, and because every component references the semantic tokens, changing them changes the whole site at once. Change is cheap. That's the entire point.
+
+This part is a little philosophical, which is fair to name. Designers usually work to someone else's brief. Here **you are the client.** The real work is investigating your own taste and deciding how you want your work to meet the world.
+
+**Start with who you are.** B2B SaaS? Fintech? A graphic designer who illustrates every project? All of the above? Your answer shapes everything below.
+
+**Fonts.** Your typefaces and a scale that holds together. Pair at most two, or use one well. Mixing many gets messy fast.
+
+**Colour.**
+- Your **accent colour.** Pick a favourite and build a 12-step scale from it ([radix-ui.com/colors/custom](https://www.radix-ui.com/colors/custom) is great for this). Most sites use the accent sparingly: links, active states, a little branding. Or don't. Fully monochromatic is a strong look in its own right.
+- A **contrast colour**, optionally, for things like inline `code`. Decide whether links use the accent or the contrast.
+- **Light or dark?** Something custom in between? User-configurable with a toggle?
+
+**Shape.** Square buttons (0 radius), soft corners (~0.8rem), or full pills. A small choice that sets a lot of tone.
+
+**Spacing and layout.** How you arrange things carries as much feel as colour does. Grids or not, space between elements, margins around content and between sections. Get this consistent and the site reads as considered.
+
+**Style your base elements** so your case studies and writing are consistent without extra work: paragraphs (inheriting from body), headings and their hierarchy, links, blockquotes, lists, inline `code`, and code blocks if you need them.
+
+**Add a little personality.** A couple of small components go far:
+
+- A **callout.** Give it props so it holds plain text in a post, or a large metric number showing a result in a case study.
+- A **scroller**, the bar of moving text across the top, if that's your thing.
+- Whatever else makes it yours.
+
+**Two cautions.** Go light on motion and animate-in effects; heavy motion reads like a default template. Used sparingly it can feel lovely. And if you've already designed in Figma, there are plugins that export your Figma variables, which you can bring straight in.
+
+Change a token, watch the whole site move. Then save:
+
+```bash
+git add .
+git commit -m "Set my own design tokens"
+git push
+```
+
+## 15:40 – 16:00: Loop 7: Ship and share
+
+**Final deploy.** You know it by now:
+
+```bash
+git add .
+git commit -m "Final polish before launch"
+git push
+```
+
+**Custom domain.** Add it in your Vercel project settings. Vercel gives you DNS records to set wherever you bought the domain. Domains take a while to fully switch over, so don't worry if it isn't live the moment we finish.
+
+**Share-around.** Everyone drops their live URL. Best part of the day.
+
+---
+
+## After today: keeping your site safe while you tinker
+
+You'll want to keep changing things without risking your live site. That's what **branches** are for. A branch is a parallel copy where you can experiment freely while `main`, your live site, stays untouched.
+
+I'll demo this at the end rather than have you do it live, because it's the one thing that genuinely takes practice. Here it is for when you need it:
+
+```bash
+git switch -c new-section       # Create a branch and move onto it
+# ...make your changes, add and commit as usual...
+git push -u origin new-section  # Push it to GitHub the first time (-u links it up)
+```
+
+Vercel gives every branch its own preview URL automatically, so you see your changes online without touching your real site. When you're happy, merge the branch into `main` on GitHub, then update your laptop:
+
+```bash
+git switch main        # Back to your main branch
+git pull origin main   # Download the merged changes
+```
+
+The golden rule that saves the most grief: **always `git switch main` and `git pull` before starting a new branch.**
+
+You own everything: the code, the content, the site, deployed under your own accounts.
+
+The deal, as thanks for being in this first free cohort: share your finished site with me, and write a short, honest testimonial. If something didn't work, tell me that too. Your feedback is how this gets better.
+
+---
+
+## Command cheat sheet
+
+### One-time setup
+
+```bash
+git --version                                   # Check Git (Mac: prompts install if missing)
+node --version                                  # Check Node
+gh --version                                    # Check the GitHub CLI
+brew --version                                  # Check Homebrew (Mac only)
+
+git config --global user.name "Your Name"       # Tag your saves with your name
+git config --global user.email "you@email.com"  # And your email
+gh auth login                                    # Sign in to GitHub from the terminal
+```
+
+### Getting a project
+
+```bash
+git clone <repo-url>   # Copy a project from GitHub to your laptop
+cd <project-folder>    # Move into the project folder
+npm install            # Download what the project needs (once)
+npm run dev            # Run the site locally while you work
+```
+
+### The everyday loop
+
+```bash
+git status             # What have I changed? What branch am I on?
+git diff               # Show me the exact lines I changed
+git add .              # Stage all changes (pack the box)
+git commit -m "..."    # Save with a message (seal and label the box)
+git push               # Send to GitHub (Vercel deploys automatically)
+```
+
+### Branches, for later
+
+```bash
+git switch -c my-feature       # Create a branch and switch to it
+git push -u origin my-feature  # Push a new branch the first time
+git switch main                # Back to main
+git pull origin main           # Update your laptop from GitHub
+```
+
+### History
+
+```bash
+git log --oneline --graph      # A clean, visual history of your saves
+```
+
+### The undo panic buttons
+
+The first is safe. The second throws away unsaved changes, so use it carefully.
+
+```bash
+git restore --staged <file>    # Unstage a file (take it back out of the box)
+git restore <file>             # Discard your changes to a file (no undo)
+```
+
+Remember: Cursor's checkpoints undo the *agent's* changes, temporarily. Git is your real history. Commit before handing the agent anything big.
+
+---
+
+## Appendix: starting a project from scratch (for later)
+
+Today you started from my template, which is the fast way. To spin up a brand new Astro project from nothing:
+
+```bash
+npm create astro@latest
+cd my-new-project
+```
+
+Turn the folder into a Git repo and make your first save:
+
+```bash
+git init                        # Make this folder a Git repo
+git add .                       # Stage everything
+git commit -m "Initial setup"   # Save it
+git branch -M main              # Name the main branch "main"
+```
+
+Create an empty repo on GitHub, connect your project to it, and push:
+
+```bash
+git remote add origin https://github.com/your-username/my-new-project.git
+git push -u origin main
+```
+
+`git remote add origin` links your folder to the GitHub repo. `git push -u origin main` sends your code up and links the two, so from then on you just type `git push`.
+
+Then connect the repo to Vercel in the browser as we did today, and you're back in the same loop.
+
+That's the whole thing. Everything else is repeating that loop on ideas you care about.

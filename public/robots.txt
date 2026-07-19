@@ -1,0 +1,6 @@
+# Tells search engines they may look at the whole site.
+User-agent: *
+Allow: /
+
+# Update the address below to match your live site.
+Sitemap: https://your-domain.com/sitemap-index.xml

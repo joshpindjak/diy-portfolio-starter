@@ -1,0 +1,43 @@
+---
+description: Astro project conventions. Static-first content site, small .astro components, build a page then extract.
+alwaysApply: true
+---
+
+# Astro Conventions
+
+This is a personal portfolio site built with Astro. It starts nearly empty on purpose. There are no components and no layouts yet. They get built during the workshop. Follow these conventions when generating or editing code.
+
+## Project structure
+
+```
+src/
+  components/    Reusable UI pieces. Empty at the start. Build them here.
+  layouts/       Page shells that wrap content. Does not exist yet. Create when needed.
+  pages/         One file per route. index.astro is the homepage.
+  content/       Content collections. Set up when the work section is built.
+  styles/        tokens.css (the design system) and global.css (a minimal baseline).
+public/          Static assets served as-is (favicon, images).
+```
+
+## Core rules
+
+- This is a content site, not an app. Default to static. Render everything at build time unless there is a clear reason not to.
+- Prefer `.astro` components. Only reach for a framework island when a piece genuinely needs client-side interactivity, like a theme toggle. Keep any island as small as possible. Do not make a whole page an island.
+- Keep components small and single-purpose. A `Nav` renders the navigation. A `Footer` renders the footer. A `ProjectCard` renders one project. Compose pages from these.
+- Layouts wrap pages. Once a layout exists, pages should be thin: pull in content, pass it to components, wrap in the layout.
+
+## Build a page first, then extract components
+
+Early in the workshop the About page is built as a single `index.astro` file, with no components. That is intentional. When asked to "turn this into components" or "make the nav reusable", extract the repeated parts (navigation, footer) into `src/components/`, create a layout in `src/layouts/` that includes them, and have the pages use that layout. Do not pre-emptively componentise a page the user is still building by hand.
+
+## Styling
+
+- Use the design tokens in `src/styles/tokens.css`. Reference the semantic layer only. See the design-tokens rule.
+- Never hard-code colours, sizes, or font families. This applies to single pages as much as components.
+- Scoped `<style>` blocks inside `.astro` files are fine and preferred for component-specific styling. They should still reference tokens.
+
+## When unsure
+
+- Ask whether something needs to be interactive before adding an island. For a portfolio the answer is usually no.
+- Match the patterns already in the repo. As components get built, follow their style.
+- Keep the build fast and the output simple. A portfolio should load quickly and be easy to maintain.
