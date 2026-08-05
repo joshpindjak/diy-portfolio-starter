@@ -11,10 +11,10 @@ This is a personal portfolio site built with Astro. It starts nearly empty on pu
 
 ```
 src/
-  components/    Reusable UI pieces. Empty at the start. Build them here.
-  layouts/       Page shells that wrap content. Does not exist yet. Create when needed.
+  components/    Reusable UI pieces. Empty at the start (has .gitkeep). Build them here.
+  layouts/       Page shells that wrap content. Empty at the start. Create when needed.
   pages/         One file per route. index.astro is the homepage.
-  content/       Content collections. Set up when the work section is built.
+  content/       Content collections. Empty at the start. Set up when the work section is built.
   styles/        tokens.css (the design system) and global.css (a minimal baseline).
 public/          Static assets served as-is (favicon, images).
 ```
@@ -24,11 +24,22 @@ public/          Static assets served as-is (favicon, images).
 - This is a content site, not an app. Default to static. Render everything at build time unless there is a clear reason not to.
 - Prefer `.astro` components. Only reach for a framework island when a piece genuinely needs client-side interactivity, like a theme toggle. Keep any island as small as possible. Do not make a whole page an island.
 - Keep components small and single-purpose. A `Nav` renders the navigation. A `Footer` renders the footer. A `ProjectCard` renders one project. Compose pages from these.
-- Layouts wrap pages. Once a layout exists, pages should be thin: pull in content, pass it to components, wrap in the layout.
+- Layouts are the shared HTML document shell (`<html>`, `<head>`, metadata, global CSS, `<body>`, and a `<slot />` for page content). Components are reusable UI pieces. Once a layout exists, pages should be thin: pick a layout, pass content into the slot.
+- You can have more than one layout later (for example a base site layout and a wider case-study layout). Prefer that over copying `<head>` into every page.
 
 ## Build a page first, then extract components
 
-Early in the workshop the About page is built as a single `index.astro` file, with no components. That is intentional. When asked to "turn this into components" or "make the nav reusable", extract the repeated parts (navigation, footer) into `src/components/`, create a layout in `src/layouts/` that includes them, and have the pages use that layout. Do not pre-emptively componentise a page the user is still building by hand.
+Early in the workshop the About page is built as a single `index.astro` file, with no components. That is intentional. Do not pre-emptively componentise a page the user is still building by hand.
+
+When asked to "turn this into components", "make the nav reusable", or similar (Loop 4), do this extraction:
+
+1. Move the navigation markup into `src/components/Nav.astro`.
+2. Move the footer markup into `src/components/Footer.astro`.
+3. Create `src/layouts/BaseLayout.astro` as the document shell: `<html>`, `<head>` (charset, viewport, title), the global CSS import, `<body>`, then `<Nav />`, a `<slot />` for page content, and `<Footer />`. Accept a `title` prop (or similar) so each page can set its document title.
+4. Update existing pages to use that layout. Keep page-specific content on the page.
+5. If asked for a small shared control (Loop 4 mini activity), add `src/components/Button.astro` — a token-styled link or button with props such as `href`, label (slot or prop), and an optional variant. Use it in a couple of places. Do not invent a large component library.
+
+Do not invent extra wrappers or folders unless asked. The point is one change to the nav (or button) updating everywhere it appears.
 
 ## Styling
 

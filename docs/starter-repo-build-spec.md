@@ -18,16 +18,16 @@ A near-blank Astro project used as the starting point for a one-day workshop whe
 - A complete design token system in `src/styles/tokens.css`, with a base layer and a semantic layer.
 - A minimal global stylesheet in `src/styles/global.css` that wires the body to the semantic tokens and nothing more.
 - A single `src/pages/index.astro` page that says "Hello world" and imports the global styles.
-- The four skill files in `.cursor/rules/`, so the agent follows the conventions during the workshop.
+- Always-on rules in `.cursor/rules/` and on-demand skills in `.cursor/skills/`, so the agent follows the conventions during the workshop.
 - A `README.md` with setup steps.
 - The `.gitignore` that Astro generates (must exclude `node_modules` and `dist`).
 
 **Do not build:**
 
-- No components. `src/components/` should be empty or absent. Students build nav, footer, cards, and everything else.
-- No page layouts. No `src/layouts/`. Students build the layout in the afternoon.
+- No components yet. `src/components/` exists but is empty (aside from a `.gitkeep` so Git keeps the folder). Students build nav, footer, cards, and everything else.
+- No page layouts yet. `src/layouts/` exists but is empty. Students build the layout in the afternoon.
 - No extra pages. Just `index.astro`.
-- No content collections yet. Students set up `src/content/` and its schema during the workshop.
+- No content collections yet. `src/content/` exists but is empty. Students add the schema and entries during the workshop.
 - No fonts bundled. Reference system fonts in the tokens by default, with a comment showing where a student would add their own.
 - No UI framework (no React, Vue, Svelte). Plain Astro and CSS is all this needs.
 
@@ -209,9 +209,28 @@ import '../styles/global.css';
 </html>
 ```
 
-## Step 5: the skill files
+## Step 5: rules and skills
 
-Create a `.cursor/rules/` folder and add the four skill files from the workshop `skills/` folder: `design-tokens`, `astro-conventions`, `content-collections`, and `deploy`. These make the agent follow the repo's conventions during the workshop, which is what keeps everyone's output consistent and on the tokens.
+**Rules** (`.cursor/rules/`, always on) keep every chat on the design system and Astro basics:
+
+| Rule | Job |
+|------|-----|
+| `design-tokens` | Two-layer tokens; semantic only; never hard-code raw values |
+| `astro-conventions` | Static-first Astro; build a page, then extract Nav/Footer/layout |
+| `content-collections` | Case studies as typed MDX; schema includes client, tags, featured |
+
+**Skills** (`.cursor/skills/<name>/SKILL.md`, loaded when relevant) cover workshop loops and situational work:
+
+| Skill | Job |
+|-------|-----|
+| `work-section` | Loop 5: homepage grid, About route, case study template, related projects |
+| `content-migration` | Loop 5: rebuild from Framer/Webflow/exports via `content-source/` |
+| `make-it-yours` | Loop 6: restyle via tokens and base element styles |
+| `mdx-components` | Loop 6: optional Callout/Scroller for case studies |
+| `deploy` | GitHub → Vercel loop; custom domain |
+| `git-workflow` | Everyday Git; commit before big agent tasks; branches after launch |
+
+One source of truth under `.cursor/`. Do not duplicate these into `docs/`. The lesson plan can link to the real files so attendees see what the agent sees.
 
 ## Step 6: the README
 
@@ -247,7 +266,7 @@ Full walkthrough is in the lesson plan.
 
 - `npm install` then `npm run dev` serves the Hello world page.
 - The page background, text colour, and font all come from tokens (change a semantic token and confirm the page changes).
-- `src/components` is empty and there is no `src/layouts`.
+- `src/components` is empty and `src/layouts` / `src/content` exist but are empty (each has a `.gitkeep`).
 - `.gitignore` excludes `node_modules` and `dist`.
 - Commit, push to GitHub, and mark the repo as a **template** in its settings so attendees can "Use this template".
 

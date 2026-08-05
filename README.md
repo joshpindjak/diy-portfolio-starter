@@ -38,7 +38,9 @@ Leave this running while you work. Every time you save a file, the page updates 
 - `src/pages` — your pages. Start with `index.astro`, the home page.
 - `src/styles/tokens.css` — your design choices in one place: colours, fonts, spacing. You'll meet this in Activity 1.
 - `src/styles/global.css` — a small baseline of styles to build on.
-- `src/components` — reusable pieces like a navigation bar or footer. It doesn't exist yet; you'll create it later on.
+- `src/components` — reusable pieces like a navigation bar or footer. Empty for now; you'll fill it later.
+- `src/layouts` — page shells that wrap your content. Empty for now; you'll add one in the afternoon.
+- `src/content` — where case studies and other writing will live. Empty for now.
 - `content-source` — a drop folder for content you're moving in from another site (a CSV export, old posts, images). Not published; you unpack it into `src/content`.
 
 ## Everything else

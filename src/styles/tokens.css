@@ -1,5 +1,5 @@
 /* =========================================================
-   BASE LAYER
+   Primitives LAYER
    Raw values. Your unlabelled palette.
    Do not reference these directly in components.
    ========================================================= */
@@ -90,7 +90,10 @@
   --text-xl: var(--font-size-4);
   --text-2xl: var(--font-size-5);
 
-  /* Spacing */
+  /* Spacing: 
+  You can alias them to be more "human" readable" 
+  e.g. small, medium large, or simply use the 
+  size-x values from the primitives layer. */
   --space-xs: var(--size-1);
   --space-sm: var(--size-2);
   --space-md: var(--size-3);
@@ -100,6 +103,7 @@
 
   /* Radius */
   --radius: var(--radius-2);
+  --radius-full: 9999px; /* A "full" radius is a circle or "pill" shape. */
 
   /* Content width */
   --content-width: 42rem;

@@ -4,8 +4,11 @@ This is a personal portfolio site built with Astro. The person you are helping
 designed it and owns it, but is not a career engineer. Your job is to help them
 keep building it quickly, confidently, and with as few errors as possible.
 
-Deeper rules live in `.cursor/rules/` (design tokens, Astro conventions,
-content, deploy). This file is the practical, day-to-day version.
+Always-on rules live in `.cursor/rules/` (design tokens, Astro conventions,
+content collections). Loop-specific and situational guidance lives in
+`.cursor/skills/` (work section, content migration, make it yours, MDX
+components, deploy, git workflow). Prefer those files over repeating their
+detail here.
 
 ## How to work with this person
 
@@ -16,77 +19,17 @@ content, deploy). This file is the practical, day-to-day version.
 - After a change, tell them how to see it: which page to open, what to look
   for. Assume the dev server is running (`npm run dev`) and updates live.
 - If a step is risky or could break the site, say so first and keep it
-  reversible. Prefer a branch for anything bigger than a small edit.
+  reversible. During the workshop, pushing to main is fine. After the site
+  is live, prefer a branch for anything bigger than a small edit.
 - Teach a little as you go, but keep it short. They want a working site, not a
   lecture.
 
-## Keep the look consistent: use the design tokens
-
-This is what stops the site from looking generic and makes big style changes
-easy later. Every colour, size, font, and spacing value comes from a token in
-`src/styles/tokens.css`.
-
-- Use the semantic tokens: `--color-text`, `--color-bg`, `--color-border`,
-  `--color-accent`, `--color-link`, `--font-body`, `--text-base`, `--space-md`,
-  `--radius`, and so on. These are values with a job.
-- Do not use the raw base tokens (`--gray-12`, `--accent-9`, `--size-3`,
-  `--font-size-2`) directly, and never type a raw value like `#333`, `16px`,
-  or a font name into a page or component.
-- If nothing fits, add a new semantic token that points at a base value,
-  rather than a one-off number.
-- To restyle the site ("warmer", "bigger type", "more spacing"), change the
-  tokens, not each page. One edit should move the whole site. That is the point.
-
-## Astro basics that prevent errors
-
-- Pages are files in `src/pages/`. The file path is the URL: `about.astro`
-  becomes `/about`, `pages/work/index.astro` becomes `/work`. To add a page,
-  add a file.
-- An `.astro` file can start with a fenced section (`---` ... `---`) for code
-  and imports, followed by the HTML. Keep both fences or the page will error.
-- Reusable pieces (nav, footer, a card) go in `src/components/` and are
-  imported into pages. Build a page as one file first, then pull the repeated
-  parts into components once they repeat.
-- Shared page shells (header + footer wrapping content) go in `src/layouts/`.
-- Put images and files that should be served as-is in `public/`. Reference
-  them from the site root, like `/images/photo.jpg`.
-- After changing `astro.config.mjs` or installing something, restart the dev
-  server so the change takes effect.
-
-## Case studies and other repeating content
-
-- Store repeating content (project case studies, posts) as Markdown/MDX files
-  in `src/content/`, described by a schema in `src/content/config.ts`.
-- Adding one is adding a new file, not pasting data into a page. Pages read the
-  collection and render each entry through a component. Build the template
-  once; every future entry is just another file.
-- If you add a new field to an entry, add it to the schema too, so the site
-  keeps checking entries for mistakes.
-- Migrating from another platform: the user drops exports (CSV, old posts,
-  images) into the top-level `content-source/` folder. Read from there and
-  write proper content files into `src/content/`. `content-source/` is a
-  staging area only and is never published.
-
-## Keep it simple and fast
-
-- This is a content site, not an app. Everything is built ahead of time and
-  served as plain files. That is what makes it fast and cheap to host.
-- Plain `.astro` files and CSS are enough for almost everything. Do not add
-  React, Vue, Tailwind, or other libraries unless there is a real need and the
-  user agrees. Each one is another thing to maintain and another way to break.
-- Scoped `<style>` blocks inside `.astro` files are good for one-off styling.
-  They should still use tokens.
-
 ## Saving and publishing
 
-- The site is on GitHub and deploys to Vercel by itself. The loop is: edit,
-  commit, push, and the live site updates in a minute or two.
-- Keep commits small with a clear message of what changed. It makes it easy to
-  find and undo a mistake later.
-- Never commit passwords, API keys, or `.env` files. The `.gitignore` already
-  excludes them; keep it that way.
+- Only commit when they ask. Only push when they ask.
+- Keep commits small with a clear message of what changed.
+- Never commit passwords, API keys, or `.env` files.
 - If a deploy fails, read the error at the top of the Vercel build log first.
-  It is almost always a typo in a content file or a missing file.
 
 ## When unsure
 

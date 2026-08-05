@@ -35,6 +35,8 @@ const projects = defineCollection({
     summary: z.string(),
     role: z.string(),
     year: z.number(),
+    client: z.string().optional(),
+    tags: z.array(z.string()).default([]),
     cover: z.string().optional(),
     featured: z.boolean().default(false),
   }),
@@ -51,22 +53,20 @@ title: Tabba
 summary: A browser extension that turns the new tab into a focus suite.
 role: Design and build
 year: 2025
+client: Independent
+tags: [product, extension]
 cover: /images/tabba-cover.png
 featured: true
 ---
 
 The body of the case study goes here, written in Markdown.
-Add images, headings, and sections as needed.
 ```
 
 ## Rules for the agent
 
 - New case studies are new files in the relevant collection. Do not hard-code project data into pages.
-- Pages query the collection and render entries through components. The work template page takes a single entry and lays it out. The homepage queries featured entries and renders cards.
 - Keep the frontmatter schema consistent. If a new field is needed, add it to the schema in `config.ts` so every entry stays typed.
-- Use the schema to drive the UI. For example, `featured: true` controls what shows on the homepage.
-- Reference design tokens for all styling. See the design-tokens rule.
-
-## The work template
-
-The most valuable page in the site is the reusable work template: one page layout that renders any project entry. Build it once, and every future case study is just a new content file. The attendee should leave with this working, because it is the thing they reuse forever.
+- Use the schema to drive the UI: `featured` for the homepage grid, `tags` for related projects.
+- Building the work grid, case study template, and related projects: use the **work-section** skill.
+- Migrating from another site: use the **content-migration** skill.
+- Reference design tokens for all styling.

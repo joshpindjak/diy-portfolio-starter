@@ -18,7 +18,7 @@ You'll start from a near-blank starter repo: a working Astro project with a "Hel
 
 Product and web design rests on understanding how the thing you're designing is actually built. If you don't know the structure, you design against invisible constraints and hand off work that doesn't survive contact with production. Learning to see past your own toolset is the whole skill. If you don't want that, Squarespace and Framer are genuinely fine, and you should use them.
 
-You're learning a new muscle today, not a checklist. I'll give you skill files that let the agent handle the fiddly parts, but I'll show you what's underneath them first. Training wheels you can take off, not a black box.
+You're learning a new muscle today, not a checklist. I'll give you Cursor rules and skills that let the agent handle the fiddly parts, but I'll show you what's underneath them first. Training wheels you can take off, not a black box.
 
 **We work in loops.** Every block ends with something real, live, and shareable. You'll have a page on the internet before lunch.
 
@@ -172,7 +172,13 @@ npm install
 npm run dev
 ```
 
-`git clone` copies the project down. `cd` moves your terminal into the folder. `npm install` downloads what the project needs, once. `npm run dev` runs the site locally at an address like `http://localhost:4321`. Open it, see "Hello world", and leave it running all day. It updates as you edit.
+Here's what we're doing:
+1. `git clone` copies the project down. 
+2. `cd` moves your terminal into the folder. 
+3. `npm install` downloads what the project needs, once. 
+4. `npm run dev` runs the site locally (a dev server) at an address like `http://localhost:4321`. Open it, see "Hello world", and leave it running all day. It updates as you edit. 
+
+When you want to work on your website in the future, open the project in Cursor and simply run `npm run dev` so you can see the local version in your browser.
 
 ### The two ways to work in Cursor
 
@@ -190,7 +196,7 @@ Three things about checkpoints that matter, straight from Cursor's docs:
 
 So they're a scratch-space undo button, not a substitute for saving your work. Good habit: commit to Git *before* you hand the agent a big task. Then if the checkpoint restore misbehaves, you still have a clean point to return to. This is exactly why we learn Git today rather than trusting the tool to remember for us.
 
-Your starter repo also includes **skill files**: instructions the agent reads so it produces consistent, token-based code instead of generic slop. They'll carry you through the fiddly parts. I'll show you what each one is doing so they never feel like magic.
+Your starter repo also includes **Cursor rules and skills**: instructions the agent reads so it produces consistent, token-based code instead of generic slop. Always-on rules live in `.cursor/rules/` (tokens, Astro, content). Loop-specific skills live in `.cursor/skills/` (work section, migration, make it yours, and more). I'll show you what they are doing so they never feel like magic.
 
 ## 10:00 – 10:20: Activity 1: Meet your design system
 
@@ -234,9 +240,9 @@ Here's the good news for right now: the starter already has sensible example tok
 
 Time to make something, and to see the design system working. We're building one page: **your About page, a digital version of your resume.** For now this is your whole site. We'll give it a proper home page and move this to `/about` this afternoon.
 
-Open `src/pages/index.astro`, clear out the "Hello world", and build your About page right there in that one file. No components yet, no fancy structure. Who you are, what you've worked on, how to reach you. Use the agent, try things, have fun with it.
+Open `src/pages/index.astro`, clear out the "Hello world", and build your About page right there in that one file. No components yet, no fancy structure. Who you are, what you've worked on, how to reach you. Use the Cursor agent, try things, have fun with it. Try asking the agent to create a page grid, contact form (doesn't need to work yet), or a table/list showing your previous work experience.
 
-The one thing that matters: **style it with the tokens, not with raw values.** Reach for `var(--color-text)` and `var(--space-md)`, not a hand-typed hex or pixel value. The skill file for tokens keeps the agent honest about this, so if you're prompting, it'll follow the rule. This is what makes your page "part of the system": when you change the tokens later, this page comes along for free.
+The one thing that matters: **style it with the tokens, not with raw values.** Reach for `var(--color-text)` and `var(--space-md)`, not a hand-typed hex or pixel value. The design-tokens rule in `.cursor/rules/` keeps the agent honest about this, so if you're prompting, it'll follow the rule. This is what makes your page "part of the system": when you change the tokens later, this page comes along for free.
 
 Don't over-polish. We rebuild this properly after lunch. Save as you go:
 
@@ -260,11 +266,16 @@ git push
 
 That sends your commits up. Your code now lives in two places: your laptop and GitHub.
 
-**Connect to Vercel.** This bit happens in the browser. Go to Vercel and import the repo you created. Vercel recognises it's an Astro project and fills in the settings. Accept the defaults and deploy. Within a minute you get a live URL ending in `.vercel.app`.
+**Connect to Vercel.** This bit happens in the browser:
 
-**Here's the loop that makes everything click.** Because Vercel watches your GitHub, the moment you `git push` it rebuilds and updates your live site. There's no deploy command. You push, and it's live.
+1. Log in to Vercel. Click "Add New Project" or go here: [https://vercel.com/new](vercel.com/new)
+2. Import the repo you created. If your Vercel account is already linked with your Github, Vercel should see the repo you have already created. If you don't see the repo, Vercel needs to be linked with your Github account in Settings (just needs to be done once).
+3. Vercel recognises it's an Astro project and fills in the settings for you. You don't need to change anything here unless you are doing a different kind of project/more complex, etc.
+4. Accept the defaults and deploy. Within a minute you get a live URL ending in `.vercel.app`.
 
-Change one thing on your page and run it again:
+**Here's the loop that brings everything together:** Because Vercel watches your GitHub, the moment you `git push` it rebuilds and updates your live site. There's no deploy command. You push, and it's live 30-60s later.
+
+Try it now: change one thing (copywriting, change a color, add a photo) on your About page and run it again:
 
 ```bash
 git add .
@@ -272,7 +283,7 @@ git commit -m "Tweak my about page"
 git push
 ```
 
-Watch it go live. That's the whole game: **edit, add, commit, push.** You'll run it all day.
+Watch it go live. That's the whole game: **edit, add, commit, push.** You'll do this every time you want to update your website. You _can_ also have the agent do this for you, but I recommend understanding what's happening before you automate it.
 
 **Share your URL.** Everyone drops their link. This is the first of several. See what other people made from the same starting point.
 
@@ -305,63 +316,107 @@ Step away from the screen. If there's something you didn't want to ask in front 
 
 ## 13:00 – 13:45: Loop 4: Into components
 
-Now the payoff for building that page by hand. We take your one page and pull the repeated parts out into reusable components, and the reason becomes obvious the moment you do it.
+Now the payoff for building that page by hand. We take your one page and pull the shared parts out, and the reason becomes obvious the moment you do it.
 
 **How an Astro project is laid out:**
 
 - **`src/pages`**: one file per page. `index.astro` is your homepage.
-- **`src/components`**: reusable pieces. Empty right now. You're about to fill it.
-- **`src/layouts`**: the shell that wraps your pages so they share a frame.
+- **`src/components`**: reusable pieces of UI. Empty right now. You're about to fill it.
+- **`src/layouts`**: shared page shells (the HTML document frame). Empty right now.
 - **`src/content`**: where your work and writing will live, as content files.
 - **`src/styles`**: your design tokens, which you already met.
 
-**Pull the shared parts out of your page:**
+### What a layout actually is
 
-- **Navigation.** Built once as a component, used on every page.
-- **Footer.** Same.
-- **A layout** that wraps every page so the nav and footer are automatic.
+Open your About page for a second. It isn't only the words about you. It's a full HTML document: the `<html>` and `<head>`, the page title and metadata, the import for your CSS, then the `<body>` with your content inside.
 
-Then change the navigation once and watch it update everywhere it appears. That's the moment. That's why we built the single page first, so you feel the difference.
+That outer shell is the same on every page you'll add. If you copy-paste it into twelve files, you'll update the title pattern or the CSS import twelve times. A **layout** is that shared shell in one place.
 
-Two ideas to hold: **components** mean building a thing once and reusing it, and a portfolio is mostly **static**, meaning it's built once and served fast, which is exactly what you want.
+In Astro, a layout typically holds:
+
+- The `<html>`, `<head>`, and `<body>`
+- Shared metadata (charset, viewport, a default title pattern)
+- The global CSS import
+- A **slot** — a hole in the middle where each page drops its own content
+- Often the site chrome that should appear on every page (navigation and footer)
+
+After you have a layout, a page becomes thin: “use this layout, and here’s what goes in the middle.” That’s the mental model. Components (nav, footer, buttons) are the reusable *pieces*. The layout is the reusable *document frame* that assembles them.
+
+You'll start with one layout for the whole site. Later, when you build case studies, you can add a second layout if that content needs a different frame — for example more width, no marketing chrome, or a different header. Same idea, different shell. We get to that in the next loop; today one solid base layout is enough.
+
+### Pull shared UI into components
+
+**Navigation and footer.** Take them out of the page and into `src/components/Nav.astro` and `src/components/Footer.astro`. Put those components into your layout so every page gets them automatically.
+
+Then change the navigation once and watch it update everywhere. That's the moment. That's why we built the single page first, so you feel the difference.
+
+**Mini activity: a Button component.** Before you move on, make one small component you'll reuse a lot — something like a primary link-button for “View project”, “Get in touch”, or “Read more”. Put it in `src/components/Button.astro`, style it with tokens, and use it in a couple of places on the page. Props keep it flexible (text label, href, maybe a primary/secondary/tertiary, is there an icon?). This is the same idea as Nav and Footer, just smaller: build once, use everywhere, restyle via tokens later.
+
+Two ideas to hold: **components** mean building a thing once and reusing it, and a **layout** means every page shares one document shell so you aren't rewriting `<head>` by hand. A portfolio is mostly **static** — built once and served fast — which is exactly what you want.
+
+Once you're done adding your Components, push it to prod:
 
 ```bash
 git add .
-git commit -m "Extract nav and footer into components, add layout"
+git commit -m "Add layout, nav, footer, and button components"
 git push
 ```
 
 ## 13:45 – 14:45: Loop 5: Content and work
 
-Now the site gets real. Use the agent to scaffold, and keep it consistent.
+Now the site gets real. You're going to stop pasting project details into pages by hand, and set up a small **content system** for your work instead.
 
-**Build the work grid.** A grid of your projects. It lives on the homepage, and you can reuse it at the bottom of a case study to show "Related projects".
+### Your projects as a content collection
 
-**Build your pages:**
+Think of this as a lightweight CMS that lives in your repo — no second website to log into, no monthly fee. Astro calls it a **content collection**.
 
-- **Home.** A line or two about you, and your work grid. Your About content moves off the home page now and gets its own place.
-- **About.** The page you already built. Give it its own route at `/about`.
-- **Case study / project template.** One reusable page that lays out any project. Build it once and every future case study is just a new content file. **This is the most valuable thing you'll make today.**
-- **One optional page for personality.** A `/now` page showing what you're working on, or a writing page. A writing page can reuse the case study structure.
+Here's the idea:
 
-**Bring your content in.** From Framer, Webflow, Squarespace, a custom site, or plain text and markdown. We're rebuilding it properly, not running an export.
+- Each project or case study is a **file** in `src/content/projects/` (Markdown or MDX).
+- Every file starts with the same set of fields at the top (title, summary, year, and so on). That list of fields is the **schema**, defined once in `src/content/config.ts`.
+- Your pages **ask the collection** for projects and render them. Add a new case study later? Drop in a new file. The homepage grid and the case study template pick it up automatically.
 
-**How a case study is structured.** Your projects live as content files with a consistent set of fields:
+That's the whole win: content in one place, layout reused, nothing hard-coded into twelve different pages.
 
-- **Name** of the project
+**Set this up first**, before you polish the homepage. Ask the agent to scaffold the projects collection and schema. The always-on **content collections** rule steers that. For the pages and grid on top, point it at the **work-section** skill (for example: “Follow the work-section skill and set up my projects collection, homepage grid, and case study template”).
+
+**How a case study is structured.** Agree your fields up front so every entry matches:
+
+- **Title** of the project
+- **Summary.** One SEO-friendly line about what you did
+- **Role** (what you contributed)
+- **Year** or date
 - **Client** (optional)
-- **Description.** One SEO-friendly line about what you did
-- **Year or date**
-- **Tags or category** (optional). Lets you sort and filter, and powers "Related projects"
-- Anything else the project needs
+- **Tags** or category (optional). Lets you sort and filter, and powers “Related projects”
+- **Cover** image (Recommended, it's used in the grid itself as well as when posting on Social Media as an opengraph image)
+- **Featured** (optional). Controls what shows on the homepage grid, in the instance that you have more projects than what you want to appearon the homepage. This is set to a True/False value. 
+- Anything else you know you'll need — add it to the schema once, then use it in every file. This is completely customizable for your needs.
 
-The agent can set up a clean config for all of it. When you later want to add a field to every project, that's one small change in one place.
+When you later want a new field on every project, you change the schema in one place and update the files. The agent can set up a clean config for all of this.
+
+### Bring your content in
+
+From Framer, Webflow, Squarespace, a custom site, or plain text and markdown. Drop exports and drafts into the `content-source/` folder, then ask the agent to migrate them into proper collection files. Use the **content-migration** skill for that. We're rebuilding cleanly, not running a one-click export.
+
+Images go in `public/` (for example `/images/...`) and get referenced from your project files. `content-source/` itself is never published.
+
+### Build the pages on top of the collection
+
+**Work grid.** Most portfolios show a grid or list of projects. It lives on the homepage, and you can reuse the same card at the bottom of a case study for “Related projects.”
+
+**Pages:**
+
+- **Home.** A line or two about you, and your work grid (usually the `featured` projects). Your About content moves off the home page now and gets its own place.
+- **About.** The page you already built. Give it its own route at `/about`.
+- **Case study / project template.** One reusable page that lays out any project from the collection. Build it once and every future case study is just a new content file. **This is the most valuable thing you'll make today.** It still sits inside a layout (your base layout is fine to start; if case studies need a different frame later, that's a second layout, not a rewrite of every project).
+- **One optional page for personality.** A `/now` page showing what you're working on, or a writing page. Writing can be a second collection that reuses the same pattern.
+- **Don't forget about responsiveness**. All page layouts should follow a logical, modern, responsive layout methodology using a few simple media queries. For example, at viewports smaller than 991px, you can collapse layouts down to 1 column so everything fits nicely. Other components and page layouts can be adjusted for responsiveness at your discretion. Simply make your browser window smaller and ensure everything looks ok. Afterwards, load your vercel URL on your phone to ensure the scale/sizing is to your liking. Not quite right? Take a screenshot and feed it back into the agent and articulate what you'd like changed. 
 
 **Share again.** Everyone push and drop their URL.
 
 ```bash
 git add .
-git commit -m "Add work grid, homepage, and case study template"
+git commit -m "Add projects collection, work grid, and case study template"
 git push
 ```
 
@@ -371,30 +426,31 @@ git push
 
 The moment we set everything up for. Until now your site has worn the example tokens. Now you make it yours, and because every component references the semantic tokens, changing them changes the whole site at once. Change is cheap. That's the entire point.
 
-This part is a little philosophical, which is fair to name. Designers usually work to someone else's brief. Here **you are the client.** The real work is investigating your own taste and deciding how you want your work to meet the world.
+This part is a little philosophical. Designers usually work to someone else's brief. Now, **you are the client.** The real work is investigating your own taste and deciding how you want your work to meet the world.
 
-**Start with who you are.** B2B SaaS? Fintech? A graphic designer who illustrates every project? All of the above? Your answer shapes everything below.
+**Start with who you are.** Product design? B2B SaaS? Fintech? A graphic designer who illustrates? Corporate vibe, or a bit of whimsy? All of the above? Your answer shapes everything below.
 
-**Fonts.** Your typefaces and a scale that holds together. Pair at most two, or use one well. Mixing many gets messy fast.
+**Fonts.** Your typefaces and a sizing scale that holds together. Pair at most two, or use one well. Mixing many gets messy fast. Grab something off of Google fonts so it's and ready to go. Drop the embed code into a new Agent window and ask it to set up your typography according to the new fonts you chose.
 
 **Colour.**
-- Your **accent colour.** Pick a favourite and build a 12-step scale from it ([radix-ui.com/colors/custom](https://www.radix-ui.com/colors/custom) is great for this). Most sites use the accent sparingly: links, active states, a little branding. Or don't. Fully monochromatic is a strong look in its own right.
+- Your **accent colour.** Pick a favourite and build a 12-step scale from it ([radix-ui.com/colors/custom](https://www.radix-ui.com/colors/custom) is great for this). Most sites use the accent sparingly: links, active states, a little branding. Or don't. Fully monochromatic is a strong look in its own right. Own it.
 - A **contrast colour**, optionally, for things like inline `code`. Decide whether links use the accent or the contrast.
-- **Light or dark?** Something custom in between? User-configurable with a toggle?
+- **Light or dark mode?** Something custom in between? Is it-configurable with a toggle?
+- You can hide some colour in the user's text-highlight color. In fact, this is a great way to inject a little bit of personality into your site. Another task for another agent (this is defined at the root level so it's easily customizable going forward).
 
-**Shape.** Square buttons (0 radius), soft corners (~0.8rem), or full pills. A small choice that sets a lot of tone.
+**Shape.** Square buttons (0 radius), soft corners (~0.8rem), or full pills. A small choice that sets the tone for your website.
 
-**Spacing and layout.** How you arrange things carries as much feel as colour does. Grids or not, space between elements, margins around content and between sections. Get this consistent and the site reads as considered.
+**Spacing and layout.** How you arrange things carries as much feel as colour does. Grids or not, space between elements, margins around content and between sections. Get this consistent and the site reads as considered. Don't forget a max-width for text areas in case studies so your type doesn't stretch across the screen.
 
 **Style your base elements** so your case studies and writing are consistent without extra work: paragraphs (inheriting from body), headings and their hierarchy, links, blockquotes, lists, inline `code`, and code blocks if you need them.
 
 **Add a little personality.** A couple of small components go far:
 
 - A **callout.** Give it props so it holds plain text in a post, or a large metric number showing a result in a case study.
-- A **scroller**, the bar of moving text across the top, if that's your thing.
-- Whatever else makes it yours.
+- A **scroller**, a 2px bar of moving text across the top of the screen to indicate scroll progres, if that's your thing.
+- Whatever else makes it yours. Think outside of the box and adapt it to your content/storytelling within each of your projects. Have fun.
 
-**Two cautions.** Go light on motion and animate-in effects; heavy motion reads like a default template. Used sparingly it can feel lovely. And if you've already designed in Figma, there are plugins that export your Figma variables, which you can bring straight in.
+**Two notes:** Go light on motion and animate-in effects; heavy motion reads like a default template. Used sparingly it can feel lovely. And if you've already designed in Figma, there are plugins that export your Figma variables, which you can bring straight in and add them to your design system.
 
 Change a token, watch the whole site move. Then save:
 
