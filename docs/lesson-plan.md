@@ -1,6 +1,10 @@
+
 # Lesson Plan
 
-**Build and ship your own portfolio site.** One day, from a blank project to a live site on your own domain, styled with a design system that's actually yours.
+> **Session 1 — August 9, 2026:** This cohort runs 10:00 AM – 3:00 PM (one hour later start, one hour earlier finish than the standard schedule). The order of activities is the same; times below are adjusted for the day.
+
+**Build and ship your own portfolio site** 
+One day, from a blank project to a live site on your own domain, styled with a design system that's actually yours.
 
 This is the full plan for the day and a reference you can keep. Every part of the workshop in order, and every terminal command you'll run, what it does, and when. Come back to it whenever you forget a step. It lives in your project repo and online.
 
@@ -10,17 +14,15 @@ You don't need to memorise anything.
 
 ## What you're building, and why this way
 
-Your own portfolio site. Coded, not templated. Built on Astro, styled with design tokens you set, deployed on Vercel under your own domain by the end of the day.
+Today we'll build a simple portfolio mini-website that you can use as a foundation for your actual portfolio website. We'll be building it with code, not a template. Starting with Astro + design tokens, the final website is deployed via Github and Vercel and linked to your own domain by the end of the day.
 
-You'll start from a near-blank starter repo: a working Astro project with a "Hello world" page, a design system of example tokens already wired up, and nothing else. You build the components and pages yourself. That's deliberate. Building the pieces is how you understand them, and how you'll be able to change anything later without fear.
+You'll start from a near-blank starter repo: a working Astro project with a "Hello world" page, a design system of example tokens already wired up, but nothing else. You build the components and pages yourself. This is deliberately barebones, building the pieces is how you understand them, and how you'll build the confidence to maintain your site and expand it in the future. 
 
-**A word on the technical parts.** Some of today is command line, Git, and deployment. If that sounds like the vegetables before dessert, here's why it isn't.
+**A word on the technical parts:** Some of today's lesson plan is command line, Git, and actual deployment in Vercel. Product and web design rests on understanding how the thing you're designing is actually built. If you don't know the structure, you design against invisible constraints and hand off work that doesn't survive contact with production. Learning to see past your own toolset is the whole skill.
 
-Product and web design rests on understanding how the thing you're designing is actually built. If you don't know the structure, you design against invisible constraints and hand off work that doesn't survive contact with production. Learning to see past your own toolset is the whole skill. If you don't want that, Squarespace and Framer are genuinely fine, and you should use them.
+You're learning a new muscle today, not just a checklist. I'll give you Cursor rules and skills that let the agent handle the fiddly parts, but I'll show you what's underneath them first. Training wheels you can take off, not simply prompting into a black box. You could theoretically use Cursor/AI Agents to do everything for you, but I firmly believe it's important to understand the underlying concepts so you can maintain your site in the future. 
 
-You're learning a new muscle today, not a checklist. I'll give you Cursor rules and skills that let the agent handle the fiddly parts, but I'll show you what's underneath them first. Training wheels you can take off, not a black box.
-
-**We work in loops.** Every block ends with something real, live, and shareable. You'll have a page on the internet before lunch.
+**We'll work in loops:** Every section ends with something real, live, and shareable. You'll have a page on the internet before our midday break today.
 
 ---
 
@@ -32,11 +34,11 @@ Open your terminal to run these. On **Mac** that's the Terminal app. On **Window
 
 ### 1. Cursor
 
-Install Cursor and sign in with a paid plan. This is the editor and AI agent we use all day.
+Download and install Cursor and sign in with a paid plan. This is the editor and AI agent we use all day. In the future, Cursor is the only thing you would need to pay for in order to maintain your site. So in essence, Cursor is replacing Webflow/Framer/Squarespace, etc. 
 
 ### 2. Git
 
-**Mac.** Git usually comes with the developer tools. Check:
+**Mac:** Git usually comes with the developer tools. Check:
 
 ```bash
 git --version
@@ -44,7 +46,7 @@ git --version
 
 If it prints a version, you're set. If instead a dialog pops up offering to install the "command line developer tools", click Install and let it run. That's Git arriving. Then check again.
 
-**Windows.** Git is not installed by default. Check first:
+**Windows:** Git is not installed by default. Check first:
 
 ```powershell
 git --version
@@ -107,8 +109,8 @@ Close and reopen your terminal, then confirm with `gh --version`.
 
 ### 6. Accounts
 
-- A **GitHub account** (free). Where your code lives.
-- A **Vercel account** (free). Sign up *with* your GitHub account. This is what puts your site online.
+- A **[GitHub account](https://github.com)** (free). This is where your code lives. As we work, we'll be "committing" (aka saving) your updates to a repo that you own. Think of these commits as checkpoints in a video game where you can save your progress.
+- A **[Vercel account](https://vercel.com)** (free). Sign up *with* your GitHub account so both are linked together. This is what puts your site online. The Hobby/free plan on Vercel is quite generous 
 
 ### 7. Bring your raw material
 
@@ -116,54 +118,59 @@ Close and reopen your terminal, then confirm with `gh --version`.
 - **Your taste.** A moodboard, a few sites you love, a favourite accent colour. Come with opinions. We go deep on this after lunch.
 - **Laptop and charger.**
 
-> **Stuck on any of this?** Don't burn your evening on it. Message me, and if it's still broken on the day we'll fix it in the first half hour.
+> **Stuck on any of this?** Don't burn your evening on it. Message me, and if it's still broken on the day, we'll fix it in the first half hour.
 
 ---
 
 ## How the day flows
 
-| Time | Loop | You'll finish with |
-|------|------|--------------------|
-| 09:00 – 09:30 | Setup check | A working machine |
-| 09:30 – 10:00 | Get the starter running | The project on your laptop |
-| 10:00 – 10:20 | **Activity 1:** Meet your design system | The tokens that will drive everything |
-| 10:20 – 11:00 | **Activity 2:** Build your About page | A page you designed, on the tokens |
-| 11:00 – 11:15 | Break | |
-| 11:15 – 11:50 | **Loop 3:** Ship it | That page live on the internet |
-| 11:50 – 12:00 | Debrief | Why one page doesn't scale |
-| 12:00 – 13:00 | Lunch | |
-| 13:00 – 13:45 | **Loop 4:** Into components | Reusable nav, footer, and a layout |
-| 13:45 – 14:45 | **Loop 5:** Content and work | A homepage and a case study template |
-| 14:45 – 15:00 | Break | |
-| 15:00 – 15:40 | **Loop 6:** Make it yours | Your own design system |
-| 15:40 – 16:00 | **Loop 7:** Ship and share | A live site on your domain |
+| Time          | Loop                                    | You'll finish with                    |
+| ------------- | --------------------------------------- | ------------------------------------- |
+| 10:00 – 10:20 | Setup check                             | A working machine                     |
+| 10:20 – 10:40 | Get the starter running                 | The project on your laptop            |
+| 10:40 – 10:55 | **Activity 1:** Meet your design system | The tokens that will drive everything |
+| 10:55 – 11:20 | **Activity 2:** Build your About page   | A page you designed, on the tokens    |
+| 11:20 – 11:30 | Break                                   |                                       |
+| 11:30 – 11:50 | **Loop 3:** Ship it                     | That page live on the internet        |
+| 11:50 – 12:00 | Debrief                                 | Why one page doesn't scale            |
+| 12:00 – 13:00 | Lunch                                   |                                       |
+| 13:00 – 13:30 | **Loop 4:** Into components             | Reusable nav, footer, and a layout    |
+| 13:30 – 14:10 | **Loop 5:** Content and work            | A homepage and a case study template  |
+| 14:10 – 14:20 | Break                                   |                                       |
+| 14:20 – 14:45 | **Loop 6:** Make it yours               | Your own design system                |
+| 14:45 – 15:00 | **Loop 7:** Ship and share              | A live site on your domain            |
 
 ---
 
 # Morning
 
-## 09:00 – 09:30: Setup check
+## 10:00 – 10:20: Setup check
 
-Quick hellos, then we make sure your machine works before we teach anything.
+Hello and welcome! Let's make sure your machine works before we start building.
 
-Tell Git who you are. Every save gets tagged with your name and email. Do this once and never again.
+1. Start by opening the Cursor desktop app
+2. Click Open Project
+3. Create a new folder on your computer anywhere you'd like
+4. In the top menu → Terminal → New Terminal
+
+Tell Git who you are. Every save gets tagged with your name and email. You usually just have to do this once per computer. In the terminal, run these two commands with your name and email address replaced:
 
 ```bash
 git config --global user.name "Your Name"
 git config --global user.email "your.email@example.com"
 ```
 
-Sign in to GitHub from the terminal. GitHub doesn't take passwords in the terminal anymore, so the CLI opens a browser, you click Authorize, and you're in.
+Next, sign in to GitHub from the terminal. GitHub doesn't take passwords in the terminal anymore, so the CLI opens a browser, you click Authorize, and you're in.
 
 ```bash
 gh auth login
 ```
 
-Choose GitHub.com, HTTPS, and authenticate through the browser when offered.
+Choose GitHub.com, HTTPS, and authenticate through the browser when prompted.
 
-## 09:30 – 10:00: Get the starter running, and meet your two modes
+## 10:20 – 10:40: Starter project + Cursor setup
 
-**Get the project.** Go to the template repo on GitHub and click **"Use this template"** to make your own copy. Then bring it to your laptop:
+**Get the starter project.** Go to the template repo on GitHub and click **"Use this template"** to make your own copy. Then bring it to your laptop:
 
 ```bash
 git clone https://github.com/your-username/your-portfolio.git
@@ -175,36 +182,36 @@ npm run dev
 Here's what we're doing:
 1. `git clone` copies the project down. 
 2. `cd` moves your terminal into the folder. 
-3. `npm install` downloads what the project needs, once. 
-4. `npm run dev` runs the site locally (a dev server) at an address like `http://localhost:4321`. Open it, see "Hello world", and leave it running all day. It updates as you edit. 
+3. `npm install` downloads what the project needs. You just need to do this once to initialize the project. 
+4. `npm run dev` runs the site locally (a dev server) at an address like `http://localhost:4321`. Open it, see "Hello world", and leave it running all day. It updates as you edit.
 
-When you want to work on your website in the future, open the project in Cursor and simply run `npm run dev` so you can see the local version in your browser.
+When you want to work on your website in the future, open the project in Cursor and simply run `npm run dev` so you can see the local version in your browser. Think of this as your local testing ground while you're working on your project before pushing to prod (live to the public).
 
 ### The two ways to work in Cursor
 
-You'll use both today. Knowing which to reach for is half the skill.
+We will use two main methods of working in Cursor:
 
-**The Agent window.** You describe what you want and it writes and edits code across files. Its best feature is **checkpoints**: automatic snapshots taken before the agent changes anything, so if it goes off the rails you can restore back to a point in the conversation and try again. Use it for generating, exploring, and anything you'd rather not type by hand.
+**1. The editor and terminal:** You read the code, make the edits, run the commands. Use it when you want to know exactly what's happening, which is most of the time when you're learning. There's also an Agent panel which you can use to chat/describe things and it writes code for you across your project. 
 
-**The editor and terminal.** You read the code, make the edits, run the commands. Use it when you want to know exactly what's happening, which is most of the time when you're learning.
+**2. The Agent window:** This is a simplified view of Cursor which acts more as a chat interface. You describe what you want and it writes and edits code across files. Its best feature is **checkpoints**: automatic snapshots taken before the agent changes anything, so if it goes off the rails you can restore back to a point in the conversation and try again. Use it for generating, exploring, and anything you'd rather not type by hand.
 
 Three things about checkpoints that matter, straight from Cursor's docs:
 
-- **Checkpoints are not version control.** They're temporary, cleaned up after your session.
-- **They only track the agent's changes.** Anything you type by hand isn't captured.
+- **Checkpoints are not version control:** They're temporary, cleaned up after your session.
+- **They only track the agent's changes:** Any manual code edits that you make aren't captured in the "checkpoints" feature of Cursor.
 - **Git is the permanent history.**
 
 So they're a scratch-space undo button, not a substitute for saving your work. Good habit: commit to Git *before* you hand the agent a big task. Then if the checkpoint restore misbehaves, you still have a clean point to return to. This is exactly why we learn Git today rather than trusting the tool to remember for us.
 
 Your starter repo also includes **Cursor rules and skills**: instructions the agent reads so it produces consistent, token-based code instead of generic slop. Always-on rules live in `.cursor/rules/` (tokens, Astro, content). Loop-specific skills live in `.cursor/skills/` (work section, migration, make it yours, and more). I'll show you what they are doing so they never feel like magic.
 
-## 10:00 – 10:20: Activity 1: Meet your design system
+## 10:40 – 10:55: Activity 1: Meet your design system
 
 Before you build anything, let's look at the design system that's going to drive it. This will feel familiar, because it's the same idea as variables and styles in Figma.
 
-Open `src/styles/tokens.css`. It has two layers.
+Open `src/styles/tokens.css`. It's preloaded with some boilerplate CSS variables will be used when building your site. There are two main "layers" primitive vs. semantic:
 
-**The base layer** is your raw values. A 12-step colour scale, raw sizes, font families. Think of it as your unlabelled palette in Figma before you've decided what anything is for.
+**The primitive layer** is your raw values. A 12-step colour scale, raw sizes, font families. Think of it as your unlabelled palette in Figma before you've decided what anything is for.
 
 ```css
 :root {
@@ -236,11 +243,15 @@ Open `src/styles/tokens.css`. It has two layers.
 
 Here's the good news for right now: the starter already has sensible example tokens. **You don't need to touch them yet.** Build on them as they are. This afternoon, in Loop 6, you'll swap in your own colours, fonts, and spacing, and watch everything you've built update in one move. That moment is the whole reason we set it up this way. For now, just know the system is there, and that everything you build should point at it.
 
-## 10:20 – 11:00: Activity 2: Build your About page
+Before we move on, feel free to drop in your favorite color as `--accent-9` and later on, you'll start to see that color when we add in more components, hyperlinks, etc.
 
-Time to make something, and to see the design system working. We're building one page: **your About page, a digital version of your resume.** For now this is your whole site. We'll give it a proper home page and move this to `/about` this afternoon.
+## 10:55 – 11:20: Activity 2: Build your About page
 
-Open `src/pages/index.astro`, clear out the "Hello world", and build your About page right there in that one file. No components yet, no fancy structure. Who you are, what you've worked on, how to reach you. Use the Cursor agent, try things, have fun with it. Try asking the agent to create a page grid, contact form (doesn't need to work yet), or a table/list showing your previous work experience.
+Time to make something, and to see the design system working. We're building one page: **your "About Me" page, a simplified, digital version of your resume.** We'll give it a proper home page and move this to `/about` later this afternoon.
+
+Open `src/pages/index.astro`, clear out the "Hello world", and build your About page right there in that one file. Think about the content you are using here, and then how you might want to design it. This page usually contains: Who you are, what you've worked on, how to reach you. 
+
+Use the Cursor Agent, try things, have fun with it. Try asking the agent to create a page grid, contact form (doesn't need to work yet), or a table/list showing your previous work experience. If you have existing Figma designs, you can simply upload a screenshot of a section or component and ask it to code it up. You can also integrate with the Figma MCP but I haven't found it to be 100% perfect anyway. While usually this page is a one-off set of components, it's good to begin thinking in systems, as in, are there components you could build once and use multiple times? 
 
 The one thing that matters: **style it with the tokens, not with raw values.** Reach for `var(--color-text)` and `var(--space-md)`, not a hand-typed hex or pixel value. The design-tokens rule in `.cursor/rules/` keeps the agent honest about this, so if you're prompting, it'll follow the rule. This is what makes your page "part of the system": when you change the tokens later, this page comes along for free.
 
@@ -252,21 +263,24 @@ git add .               # Stage the changes (pack the box)
 git commit -m "Build my about page"   # Save them (seal and label the box)
 ```
 
-## 11:00 – 11:15: Break
+## 11:20 – 11:30: Break
 
-## 11:15 – 11:50: Loop 3: Ship it
+Grab a coffee or a snack. See you back here in a few!
+
+
+## 11:30 – 11:50: Loop 3: Ship it
 
 Now we put your page on the internet, where anyone can see it.
 
-**Push your work to GitHub.**
+**Push your work to GitHub:**
 
 ```bash
 git push
 ```
 
-That sends your commits up. Your code now lives in two places: your laptop and GitHub.
+That sends your commits up. Your code now lives in two places: your laptop and on GitHub.
 
-**Connect to Vercel.** This bit happens in the browser:
+**Connect to Vercel:** This next part happens in the browser:
 
 1. Log in to Vercel. Click "Add New Project" or go here: [https://vercel.com/new](vercel.com/new)
 2. Import the repo you created. If your Vercel account is already linked with your Github, Vercel should see the repo you have already created. If you don't see the repo, Vercel needs to be linked with your Github account in Settings (just needs to be done once).
@@ -285,7 +299,7 @@ git push
 
 Watch it go live. That's the whole game: **edit, add, commit, push.** You'll do this every time you want to update your website. You _can_ also have the agent do this for you, but I recommend understanding what's happening before you automate it.
 
-**Share your URL.** Everyone drops their link. This is the first of several. See what other people made from the same starting point.
+**Share your URL:** Everyone drops their link. This is the first of several. See what other people made from the same starting point.
 
 > **If you have a domain**, we can point a staging subdomain at this, like `v2.yourdomain.com`, so you preview the new site while your old one stays up. Domains involve DNS, which can be slow. We'll set it up and it'll arrive when it arrives.
 
@@ -308,13 +322,13 @@ git log --oneline --graph   # A clean visual history of my saves
 
 # Lunch (12:00 – 13:00)
 
-Step away from the screen. If there's something you didn't want to ask in front of the group, grab me.
+Step away from the screen, grab a bite to eat. If there's something you didn't want to ask in front of the group, feel free to DM and I'll get you sorted.
 
 ---
 
 # Afternoon
 
-## 13:00 – 13:45: Loop 4: Into components
+## 13:00 – 13:30: Loop 4: Components
 
 Now the payoff for building that page by hand. We take your one page and pull the shared parts out, and the reason becomes obvious the moment you do it.
 
@@ -332,7 +346,7 @@ Open your About page for a second. It isn't only the words about you. It's a ful
 
 That outer shell is the same on every page you'll add. If you copy-paste it into twelve files, you'll update the title pattern or the CSS import twelve times. A **layout** is that shared shell in one place.
 
-In Astro, a layout typically holds:
+In Astro, a **layout** typically holds:
 
 - The `<html>`, `<head>`, and `<body>`
 - Shared metadata (charset, viewport, a default title pattern)
@@ -342,17 +356,19 @@ In Astro, a layout typically holds:
 
 After you have a layout, a page becomes thin: “use this layout, and here’s what goes in the middle.” That’s the mental model. Components (nav, footer, buttons) are the reusable *pieces*. The layout is the reusable *document frame* that assembles them.
 
-You'll start with one layout for the whole site. Later, when you build case studies, you can add a second layout if that content needs a different frame — for example more width, no marketing chrome, or a different header. Same idea, different shell. We get to that in the next loop; today one solid base layout is enough.
+You'll start with one layout for the whole site. Later, when you build case studies, you can add a second layout if that content needs a different frame, for example more width, no marketing chrome, or a different header. Same idea, different shell. We get to that in the next loop; today one solid base layout is enough.
 
 ### Pull shared UI into components
 
-**Navigation and footer.** Take them out of the page and into `src/components/Nav.astro` and `src/components/Footer.astro`. Put those components into your layout so every page gets them automatically.
+Lets use the Cursor agent to begin dropping reusable elements into their own components that can be reused across multiple pages very easily.
 
-Then change the navigation once and watch it update everywhere. That's the moment. That's why we built the single page first, so you feel the difference.
+**Navigation and footer:** Take them out of the page and into `src/components/Nav.astro` and `src/components/Footer.astro`. Put those components into your layout so every page gets them automatically.
 
-**Mini activity: a Button component.** Before you move on, make one small component you'll reuse a lot — something like a primary link-button for “View project”, “Get in touch”, or “Read more”. Put it in `src/components/Button.astro`, style it with tokens, and use it in a couple of places on the page. Props keep it flexible (text label, href, maybe a primary/secondary/tertiary, is there an icon?). This is the same idea as Nav and Footer, just smaller: build once, use everywhere, restyle via tokens later.
+Then change something in the navigation once and watch it update everywhere. This is a huge time saver and helps you build better consistency across large websites. 
 
-Two ideas to hold: **components** mean building a thing once and reusing it, and a **layout** means every page shares one document shell so you aren't rewriting `<head>` by hand. A portfolio is mostly **static** — built once and served fast — which is exactly what you want.
+**Mini activity: a Button component:** Before you move on, make one small component you'll reuse a lot — something like a primary link-button for “View project”, “Get in touch”, or “Read more”. Put it in `src/components/Button.astro`, style it with tokens, and use it in a couple of places on the page. Props keep it flexible (text label, href, maybe a primary/secondary/tertiary styling, do you want to include an optional icon?). This is the same idea as Nav and Footer, just smaller: build once, use everywhere, restyle via tokens later.
+
+Two ideas to remember here: **components** mean building a thing once and reusing it, and a **layout** means every page shares one document shell so you aren't rewriting `<head>` by hand. A portfolio is mostly **static** — built once and served fast — which is exactly what you want.
 
 Once you're done adding your Components, push it to prod:
 
@@ -362,7 +378,7 @@ git commit -m "Add layout, nav, footer, and button components"
 git push
 ```
 
-## 13:45 – 14:45: Loop 5: Content and work
+## 13:30 – 14:10: Loop 5: Content and Projects
 
 Now the site gets real. You're going to stop pasting project details into pages by hand, and set up a small **content system** for your work instead.
 
@@ -380,10 +396,10 @@ That's the whole win: content in one place, layout reused, nothing hard-coded in
 
 **Set this up first**, before you polish the homepage. Ask the agent to scaffold the projects collection and schema. The always-on **content collections** rule steers that. For the pages and grid on top, point it at the **work-section** skill (for example: “Follow the work-section skill and set up my projects collection, homepage grid, and case study template”).
 
-**How a case study is structured.** Agree your fields up front so every entry matches:
+**How a case study is structured:** Agree your fields up front so every entry matches:
 
 - **Title** of the project
-- **Summary.** One SEO-friendly line about what you did
+- **Summary:** One SEO-friendly line about what you did
 - **Role** (what you contributed)
 - **Year** or date
 - **Client** (optional)
@@ -402,17 +418,22 @@ Images go in `public/` (for example `/images/...`) and get referenced from your 
 
 ### Build the pages on top of the collection
 
-**Work grid.** Most portfolios show a grid or list of projects. It lives on the homepage, and you can reuse the same card at the bottom of a case study for “Related projects.”
+**Work grid:** Most portfolios show a grid or list of projects. It lives on the homepage, and you can reuse the same card at the bottom of a case study for “Related projects.”
 
 **Pages:**
 
-- **Home.** A line or two about you, and your work grid (usually the `featured` projects). Your About content moves off the home page now and gets its own place.
-- **About.** The page you already built. Give it its own route at `/about`.
-- **Case study / project template.** One reusable page that lays out any project from the collection. Build it once and every future case study is just a new content file. **This is the most valuable thing you'll make today.** It still sits inside a layout (your base layout is fine to start; if case studies need a different frame later, that's a second layout, not a rewrite of every project).
-- **One optional page for personality.** A `/now` page showing what you're working on, or a writing page. Writing can be a second collection that reuses the same pattern.
+- **Home:** A line or two about you, and your work grid (usually the `featured` projects). Your About content moves off the home page now and gets its own place.
+- **About:** The page you already built. Give it its own route at `/about`.
+- **Case study / project template:** One reusable page that lays out any project from the collection. Build it once and every future case study is just a new content file. **This is the most valuable thing you'll make today.** It still sits inside a layout (your base layout is fine to start; if case studies need a different frame later, that's a second layout, not a rewrite of every project).
+- **Optional: One page for some personality:** This could be `/now` page showing what you're working on, or a Writing/Blog section. A blog is essentially a second Collection that reuses the same pattern: each blog post gets its own markdown file loaded into a template. 
 - **Don't forget about responsiveness**. All page layouts should follow a logical, modern, responsive layout methodology using a few simple media queries. For example, at viewports smaller than 991px, you can collapse layouts down to 1 column so everything fits nicely. Other components and page layouts can be adjusted for responsiveness at your discretion. Simply make your browser window smaller and ensure everything looks ok. Afterwards, load your vercel URL on your phone to ensure the scale/sizing is to your liking. Not quite right? Take a screenshot and feed it back into the agent and articulate what you'd like changed. 
 
-**Share again.** Everyone push and drop their URL.
+> **A few notes about responsiveness:** 
+> To avoid getting stuck in the weeds, I like to maintain 2 core screen sizes: (1) Standard desktop/laptop size, which affects all screens, and (2) 991 and below. All styling and CSS you do on desktop affects all screen sizes, and then you add special styling (using Media Queries) which affects smaller screens. 
+> 
+> When writing code with AI, the agents are usually pretty good at baking in responsive principles by default, but it's always good to check. For example, usually when you ask an AI to build you a 4 column grid, it will also include a Media Query to change it to 1 column on mobile. 
+
+**Share again:** Everyone push and drop their URL.
 
 ```bash
 git add .
@@ -420,31 +441,31 @@ git commit -m "Add projects collection, work grid, and case study template"
 git push
 ```
 
-## 14:45 – 15:00: Break
+## 14:10 – 14:20: Break
 
-## 15:00 – 15:40: Loop 6: Make it yours
+## 14:20 – 14:45: Loop 6: Make it yours
 
 The moment we set everything up for. Until now your site has worn the example tokens. Now you make it yours, and because every component references the semantic tokens, changing them changes the whole site at once. Change is cheap. That's the entire point.
 
 This part is a little philosophical. Designers usually work to someone else's brief. Now, **you are the client.** The real work is investigating your own taste and deciding how you want your work to meet the world.
 
-**Start with who you are.** Product design? B2B SaaS? Fintech? A graphic designer who illustrates? Corporate vibe, or a bit of whimsy? All of the above? Your answer shapes everything below.
+**Start with who you are:** Product design? B2B SaaS? Fintech? A graphic designer who illustrates? Corporate vibe, or a bit of whimsy? All of the above? Your answer shapes everything below.
 
-**Fonts.** Your typefaces and a sizing scale that holds together. Pair at most two, or use one well. Mixing many gets messy fast. Grab something off of Google fonts so it's and ready to go. Drop the embed code into a new Agent window and ask it to set up your typography according to the new fonts you chose.
+**Fonts:** Your typefaces and a sizing scale that holds together. Pair at most two, or use one well. Mixing many gets messy fast. Grab something off of Google fonts so it's and ready to go. Drop the embed code into a new Agent window and ask it to set up your typography according to the new fonts you chose.
 
-**Colour.**
+**Colour:**
 - Your **accent colour.** Pick a favourite and build a 12-step scale from it ([radix-ui.com/colors/custom](https://www.radix-ui.com/colors/custom) is great for this). Most sites use the accent sparingly: links, active states, a little branding. Or don't. Fully monochromatic is a strong look in its own right. Own it.
 - A **contrast colour**, optionally, for things like inline `code`. Decide whether links use the accent or the contrast.
 - **Light or dark mode?** Something custom in between? Is it-configurable with a toggle?
 - You can hide some colour in the user's text-highlight color. In fact, this is a great way to inject a little bit of personality into your site. Another task for another agent (this is defined at the root level so it's easily customizable going forward).
 
-**Shape.** Square buttons (0 radius), soft corners (~0.8rem), or full pills. A small choice that sets the tone for your website.
+**Shape:** Square buttons (0 radius), soft corners (~0.8rem), or full pills. A small choice that sets the tone for your website.
 
-**Spacing and layout.** How you arrange things carries as much feel as colour does. Grids or not, space between elements, margins around content and between sections. Get this consistent and the site reads as considered. Don't forget a max-width for text areas in case studies so your type doesn't stretch across the screen.
+**Spacing and layout:** How you arrange things carries as much feel as colour does. Grids or not, space between elements, margins around content and between sections. Get this consistent and the site reads as considered. Don't forget a max-width for text areas in case studies so your type doesn't stretch across the screen.
 
 **Style your base elements** so your case studies and writing are consistent without extra work: paragraphs (inheriting from body), headings and their hierarchy, links, blockquotes, lists, inline `code`, and code blocks if you need them.
 
-**Add a little personality.** A couple of small components go far:
+**Add a little personality:** A couple of small components go far:
 
 - A **callout.** Give it props so it holds plain text in a post, or a large metric number showing a result in a case study.
 - A **scroller**, a 2px bar of moving text across the top of the screen to indicate scroll progres, if that's your thing.
@@ -460,7 +481,7 @@ git commit -m "Set my own design tokens"
 git push
 ```
 
-## 15:40 – 16:00: Loop 7: Ship and share
+## 14:45 – 15:00: Loop 7: Ship and share
 
 **Final deploy.** You know it by now:
 
@@ -470,9 +491,9 @@ git commit -m "Final polish before launch"
 git push
 ```
 
-**Custom domain.** Add it in your Vercel project settings. Vercel gives you DNS records to set wherever you bought the domain. Domains take a while to fully switch over, so don't worry if it isn't live the moment we finish.
+**Custom domain:** Add it in your Vercel project settings. Vercel gives you DNS records to set wherever you bought the domain. Domains take a while to fully switch over, so don't worry if it isn't live the moment we finish.
 
-**Share-around.** Everyone drops their live URL. Best part of the day.
+**Share-around:** Everyone drops their live URL into the chat or Figjam. See what everyone else created, get inspired!
 
 ---
 
@@ -480,7 +501,7 @@ git push
 
 You'll want to keep changing things without risking your live site. That's what **branches** are for. A branch is a parallel copy where you can experiment freely while `main`, your live site, stays untouched.
 
-I'll demo this at the end rather than have you do it live, because it's the one thing that genuinely takes practice. Here it is for when you need it:
+I'll demo this at the end rather than have you do it live, because it's the one thing that really takes practice. Here it is for when you need it:
 
 ```bash
 git switch -c new-section       # Create a branch and move onto it

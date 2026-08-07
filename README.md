@@ -1,6 +1,6 @@
 # Portfolio Starter
 
-This is where you begin in the Build and Ship Your Portfolio workshop. It's a nearly empty website with one page that says "Hello world" and a ready-made set of design choices (colours, fonts, and spacing) already wired in. Over the day you turn it into your own portfolio.
+This is where you begin in the Build and Ship Your Portfolio workshop. It's a nearly empty website with one page that says "Hello world" and a ready-made set of design choices (colors, fonts, and spacing) already wired in. Over the day you turn it into your own portfolio.
 
 There's very little here, on purpose. You build the rest yourself, because building it is what lets you change it later without fear.
 
@@ -11,11 +11,13 @@ You need two free tools on your computer first:
 - **Node**, which runs the website on your laptop.
 - **Git**, which saves your work.
 
-The workshop setup guide walks you through installing both. Do that first.
+The **[Before the day: setup](docs/lesson-plan.md#before-the-day-setup)** section of the lesson plan walks you through installing both (plus Cursor, GitHub, and Vercel). Do that first.
+
+If you do not have this project on your laptop yet, follow **[Get the starter project](docs/lesson-plan.md#1020--1040-starter-project--cursor-setup)** in the lesson plan first (`Use this template` on GitHub, then `git clone`).
 
 ## Set it up (once)
 
-Open this folder in your terminal and run:
+Open this folder in **Cursor**, then open the built-in terminal (**Terminal → New Terminal**). Run:
 
 ```bash
 npm install
@@ -36,7 +38,7 @@ Leave this running while you work. Every time you save a file, the page updates 
 ## Where things are
 
 - `src/pages` — your pages. Start with `index.astro`, the home page.
-- `src/styles/tokens.css` — your design choices in one place: colours, fonts, spacing. You'll meet this in Activity 1.
+- `src/styles/tokens.css` — your design choices in one place: colors, fonts, spacing. You'll meet this in Activity 1.
 - `src/styles/global.css` — a small baseline of styles to build on.
 - `src/components` — reusable pieces like a navigation bar or footer. Empty for now; you'll fill it later.
 - `src/layouts` — page shells that wrap your content. Empty for now; you'll add one in the afternoon.
@@ -45,4 +47,4 @@ Leave this running while you work. Every time you save a file, the page updates 
 
 ## Everything else
 
-The full plan for the day lives in the lesson plan. Go back to it any time you forget a step.
+The full plan for the day lives in the **[lesson plan](docs/lesson-plan.md)**. Go back to it any time you forget a step.
