@@ -6,7 +6,7 @@
 **Build and ship your own portfolio site** 
 One day, from a blank project to a live site on your own domain, styled with a design system that's actually yours.
 
-This is the full plan for the day and a reference you can keep. Every part of the workshop in order, and every terminal command you'll run, what it does, and when. Come back to it whenever you forget a step. It lives in your project repo and online.
+This is the full plan for the day and a reference you can keep. Every part of the workshop in order, and every terminal command you'll run, what it does, and when. Come back to it whenever you forget a step. It lives in your project repo and [online](https://github.com/joshpindjak/diy-portfolio-starter).
 
 You don't need to memorise anything.
 
@@ -170,7 +170,7 @@ Choose GitHub.com, HTTPS, and authenticate through the browser when prompted.
 
 ## 10:20 – 10:40: Starter project + Cursor setup
 
-**Get the starter project.** Go to the template repo on GitHub and click **"Use this template"** to make your own copy. Then bring it to your laptop:
+**Get the starter project.** Go to **[joshpindjak/diy-portfolio-starter](https://github.com/joshpindjak/diy-portfolio-starter)** on GitHub and click **"Use this template"** to make your own copy. Then bring it to your laptop (swap in your GitHub username and repo name):
 
 ```bash
 git clone https://github.com/your-username/your-portfolio.git
@@ -588,7 +588,7 @@ Remember: Cursor's checkpoints undo the *agent's* changes, temporarily. Git is y
 
 ## Appendix: starting a project from scratch (for later)
 
-Today you started from my template, which is the fast way. To spin up a brand new Astro project from nothing:
+Today you started from the [diy-portfolio-starter](https://github.com/joshpindjak/diy-portfolio-starter) template, which is the fast way. To spin up a brand new Astro project from nothing:
 
 ```bash
 npm create astro@latest

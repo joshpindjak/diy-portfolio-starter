@@ -1,6 +1,6 @@
-# Portfolio Starter
+# DIY Portfolio Starter
 
-This is where you begin in the Build and Ship Your Portfolio workshop. It's a nearly empty website with one page that says "Hello world" and a ready-made set of design choices (colors, fonts, and spacing) already wired in. Over the day you turn it into your own portfolio.
+Welcome to the DIY Portfolio starter project. This is a nearly empty website with one page that says "Hello world" and a ready-made set of design choices (colors, fonts, and spacing) already wired in. It's meant to be customized by you amd over the day you turn it into your own portfolio.
 
 There's very little here, on purpose. You build the rest yourself, because building it is what lets you change it later without fear.
 
