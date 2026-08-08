@@ -25,4 +25,4 @@ pnpm-debug.log*
 .idea/
 
 # setup doc
-/docs/starter-repo-build-spec.md
+/notes/
