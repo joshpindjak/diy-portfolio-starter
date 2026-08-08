@@ -23,8 +23,17 @@ That is the whole loop. Edit, commit, push, live.
 ## First-time setup
 
 **1. Get the project into GitHub.**
-- In the workshop, attendees start from a template repo. They click "Use this template" on GitHub to create their own copy, then clone it. Git and the GitHub remote are already wired up.
-- (Only if starting from scratch: initialize Git, create a GitHub repository, connect the local project, and push.)
+
+The starter (`joshpindjak/diy-portfolio-starter`) is a GitHub template repository. Attendees click "Use this template" → "Create a new repository" to get their own copy, then clone *that* copy. Git and the remote are wired up correctly from the start, so `git push` works with no extra setup.
+
+If a push is refused with a permission error or `403`, they cloned the starter directly instead of their own copy. Check `git remote -v`: the URL must show their username, not `joshpindjak`. Fix by pointing the folder at a repo they own:
+
+```bash
+git remote remove origin
+gh repo create my-portfolio --public --source=. --remote=origin --push
+```
+
+(Only if starting from scratch with no repo at all: `git init`, commit, then the `gh repo create` command above.)
 
 **2. Connect GitHub to Vercel.**
 - Sign in to Vercel with GitHub.

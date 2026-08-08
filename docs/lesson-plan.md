@@ -170,20 +170,54 @@ Choose GitHub.com, HTTPS, and authenticate through the browser when prompted.
 
 ## 10:20 – 10:40: Starter project + Cursor setup
 
-**Get the starter project.** Go to **[joshpindjak/diy-portfolio-starter](https://github.com/joshpindjak/diy-portfolio-starter)** on GitHub and click **"Use this template"** to make your own copy. Then bring it to your laptop (swap in your GitHub username and repo name):
+There are two halves to this: first you make your **own copy of the starter on GitHub**, then you bring that copy **down to your laptop**. Both matter, and in that order.
+
+### Step 1: Make your own copy on GitHub (in the browser)
+
+Go to **[joshpindjak/diy-portfolio-starter](https://github.com/joshpindjak/diy-portfolio-starter)** and click the green **"Use this template"** button → **Create a new repository**.
+
+- **Name it** whatever you like: `my-portfolio`, `portfolio`, `jane-website`.
+- Leave it **Public** (Vercel's free plan is happiest this way, and it costs you nothing).
+- Click **Create repository**.
+
+You now have your own repo, on your own GitHub account, with all the starter files in it. This is where your site will live online, and what Vercel will read from later this morning.
+
+> **Why "Use this template" and not "Fork"?** A fork is for contributing changes *back* to someone else's project. A template is for starting your own thing from a known-good beginning. You want the second one — this is your site now, not a copy of mine.
+
+### Step 2: Bring your copy down to your laptop
+
+On **your new repo** page, click the green **Code** button and copy the HTTPS URL. It should look like `https://github.com/your-username/my-portfolio.git`.
+
+In Cursor's welcome screen, click **Clone repo** → **Clone from URL**, and paste **your** URL. Cursor asks where to save it — pick a folder you'll remember (`Documents/Coding` is fine) — and it opens the project for you.
+
+Then open the terminal in Cursor (**Terminal → New Terminal**) and get the site running:
 
 ```bash
-git clone https://github.com/your-username/your-portfolio.git
-cd your-portfolio
 npm install
 npm run dev
 ```
 
-Here's what we're doing:
-1. `git clone` copies the project down. 
-2. `cd` moves your terminal into the folder. 
-3. `npm install` downloads what the project needs. You just need to do this once to initialize the project. 
-4. `npm run dev` runs the site locally (a dev server) at an address like `http://localhost:4321`. Open it, see "Hello world", and leave it running all day. It updates as you edit.
+1. `npm install` downloads what the project needs. Once per project.
+2. `npm run dev` runs the site locally at an address like `http://localhost:4321`. Open it, see "Hello world", and leave it running all day. It updates as you edit.
+
+### Step 3: Check you're wired up to your own repo
+
+One quick command, and it's worth understanding what it tells you:
+
+```bash
+git remote -v
+```
+
+`origin` is just a nickname for "the GitHub repo this folder talks to". You should see **your** username in that URL. If you do, you're set for the whole day: your saves have somewhere to go, and Vercel will find them.
+
+> **If you see `joshpindjak` instead**, you've cloned my starter rather than your own copy. Easy fix — this points your folder at a fresh repo of your own and pushes everything up:
+>
+> ```bash
+> git remote remove origin
+> gh repo create my-portfolio --public --source=. --remote=origin --push
+> ```
+>
+> Run `git remote -v` again to confirm your username now shows. (`gh` is the GitHub CLI you installed before today, which is why this works without a browser.)
 
 When you want to work on your website in the future, open the project in Cursor and simply run `npm run dev` so you can see the local version in your browser. Think of this as your local testing ground while you're working on your project before pushing to prod (live to the public).
 
@@ -274,11 +308,20 @@ Now we put your page on the internet, where anyone can see it.
 
 **Push your work to GitHub:**
 
+You made your repo this morning, so sending your About page up is one command:
+
 ```bash
 git push
 ```
 
-That sends your commits up. Your code now lives in two places: your laptop and on GitHub.
+That's it. Your code now lives in two places: your laptop and your GitHub. Refresh your repo page in the browser and you'll see your About page files sitting there.
+
+> **If `git push` is refused** (a message about permission or a `403`), your folder is pointing at my starter instead of your own copy. Check with `git remote -v`, and if you see `joshpindjak`, run the fix from Step 3 this morning:
+>
+> ```bash
+> git remote remove origin
+> gh repo create my-portfolio --public --source=. --remote=origin --push
+> ```
 
 **Connect to Vercel:** This next part happens in the browser:
 
@@ -539,13 +582,26 @@ git config --global user.email "you@email.com"  # And your email
 gh auth login                                    # Sign in to GitHub from the terminal
 ```
 
-### Getting a project
+### Getting the starter
+
+In the browser first: **Use this template** on the starter repo → **Create a new repository**. That makes your own copy under your account.
+
+Then clone **your** repo (Cursor's **Clone repo** button, or the terminal):
 
 ```bash
-git clone <repo-url>   # Copy a project from GitHub to your laptop
-cd <project-folder>    # Move into the project folder
+git clone https://github.com/your-username/my-portfolio.git
+cd my-portfolio        # Move into the project folder
+git remote -v          # Confirm origin shows YOUR username
 npm install            # Download what the project needs (once)
 npm run dev            # Run the site locally while you work
+```
+
+Cloned the wrong repo by mistake? Point it at a new repo of your own:
+
+```bash
+git remote remove origin   # Forget the starter repo
+gh repo create my-portfolio --public --source=. --remote=origin --push
+                           # Create YOUR repo, link it, push — one command
 ```
 
 ### The everyday loop

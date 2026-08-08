@@ -13,7 +13,7 @@ You need two free tools on your computer first:
 
 The **[Before the day: setup](docs/lesson-plan.md#before-the-day-setup)** section of the lesson plan walks you through installing both (plus Cursor, GitHub, and Vercel). Do that first.
 
-If you do not have this project on your laptop yet, follow **[Get the starter project](docs/lesson-plan.md#1020--1040-starter-project--cursor-setup)** in the lesson plan first (`Use this template` on GitHub, then `git clone`).
+If you do not have this project on your laptop yet: click **Use this template** on GitHub to make your own copy, then clone *that* copy to your laptop. **[Get the starter project](docs/lesson-plan.md#step-1-make-your-own-copy-on-github-in-the-browser)** in the lesson plan walks through both steps.
 
 ## Set it up (once)
 
