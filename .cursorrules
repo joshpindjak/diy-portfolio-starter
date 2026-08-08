@@ -10,6 +10,25 @@ content collections). Loop-specific and situational guidance lives in
 components, deploy, git workflow). Prefer those files over repeating their
 detail here.
 
+## Starter repo at a glance
+
+Nearly empty on purpose. Pre-wired: `src/styles/tokens.css`, `src/styles/global.css`,
+`src/pages/index.astro` (Hello world). Empty until built in the workshop:
+`src/components/`, `src/layouts/`, `src/content/`. Drop folder for imports:
+`content-source/` (not published).
+
+Technical constraints live in `.cursor/rules/` (always applied). For specific tasks,
+read the matching skill in `.cursor/skills/` before acting:
+
+| Task | Skill |
+|------|-------|
+| Work grid, case studies, related projects | work-section |
+| Restyle colours, fonts, spacing | make-it-yours |
+| Callouts, scroller in MDX | mdx-components |
+| Moving content from Framer/Webflow/etc. | content-migration |
+| Git, commits, undo, branches | git-workflow |
+| Vercel, deploy, custom domain | deploy |
+
 ## How to work with this person
 
 - Explain what you are about to do in one or two plain sentences before you do
