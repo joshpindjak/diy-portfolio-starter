@@ -1,6 +1,10 @@
 # DIY Portfolio Starter
 
-Welcome to the DIY Portfolio starter project. This is a nearly empty website with one page that says "Hello world" and a ready-made set of design choices (colors, fonts, and spacing) already wired in. It's meant to be customized by you amd over the day you turn it into your own portfolio.
+This repo is a nearly empty website with one page that says "Hello world" and a ready-made set of design choices (colors, fonts, and spacing) already wired in. It's meant to be customized by you and over the day you turn it into your own portfolio website, starting with:
+
+- an About page
+- a Homepage (including links/thumbnails for each project)
+- a Case Study or Project template page that will show longform content for each of the projects in your portfolio.
 
 There's very little here, on purpose. You build the rest yourself, because building it is what lets you change it later without fear.
 
