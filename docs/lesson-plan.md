@@ -1,7 +1,7 @@
 
 # Lesson Plan
 
-> **Session 1 — August 9, 2026:** This cohort runs 10:00 AM – 3:00 PM (one hour later start, one hour earlier finish than the standard schedule). The order of activities is the same; times below are adjusted for the day.
+> **Workshop hours:** 9:00 AM – 4:00 PM. The order of activities is fixed; times below are the schedule for the day.
 
 **Build and ship your own portfolio site** 
 One day, from a blank project to a live site on your own domain, styled with a design system that's actually yours.
@@ -126,25 +126,25 @@ Close and reopen your terminal, then confirm with `gh --version`.
 
 | Time          | Loop                                    | You'll finish with                    |
 | ------------- | --------------------------------------- | ------------------------------------- |
-| 10:00 – 10:20 | Setup check                             | A working machine                     |
-| 10:20 – 10:40 | Get the starter running                 | The project on your laptop            |
-| 10:40 – 10:55 | **Activity 1:** Meet your design system | The tokens that will drive everything |
-| 10:55 – 11:20 | **Activity 2:** Build your About page   | A page you designed, on the tokens    |
-| 11:20 – 11:30 | Break                                   |                                       |
-| 11:30 – 11:50 | **Loop 3:** Ship it                     | That page live on the internet        |
-| 11:50 – 12:00 | Debrief                                 | Why one page doesn't scale            |
-| 12:00 – 13:00 | Lunch                                   |                                       |
-| 13:00 – 13:30 | **Loop 4:** Into components             | Reusable nav, footer, and a layout    |
-| 13:30 – 14:10 | **Loop 5:** Content and work            | A homepage and a case study template  |
-| 14:10 – 14:20 | Break                                   |                                       |
-| 14:20 – 14:45 | **Loop 6:** Make it yours               | Your own design system                |
-| 14:45 – 15:00 | **Loop 7:** Ship and share              | A live site on your domain            |
+| 9:00 – 9:25   | Setup check                             | A working machine                     |
+| 9:25 – 9:50   | Get the starter running                 | The project on your laptop            |
+| 9:50 – 10:10  | **Activity 1:** Meet your design system | The tokens that will drive everything |
+| 10:10 – 10:45 | **Activity 2:** Build your About page   | A page you designed, on the tokens    |
+| 10:45 – 11:00 | Break                                   |                                       |
+| 11:00 – 11:30 | **Loop 3:** Ship it                     | That page live on the internet        |
+| 11:30 – 11:45 | Debrief                                 | Why one page doesn't scale            |
+| 11:45 – 12:45 | Lunch                                   |                                       |
+| 12:45 – 13:30 | **Loop 4:** Into components             | Reusable nav, footer, and a layout    |
+| 13:30 – 14:30 | **Loop 5:** Content and work            | A homepage and a case study template  |
+| 14:30 – 14:45 | Break                                   |                                       |
+| 14:45 – 15:30 | **Loop 6:** Make it yours               | Your own design system                |
+| 15:30 – 16:00 | **Loop 7:** Ship and share              | A live site on your domain            |
 
 ---
 
 # Morning
 
-## 10:00 – 10:20: Setup check
+## 9:00 – 9:25: Setup check
 
 Hello and welcome! Let's make sure your machine works before we start building.
 
@@ -168,7 +168,7 @@ gh auth login
 
 Choose GitHub.com, HTTPS, and authenticate through the browser when prompted.
 
-## 10:20 – 10:40: Starter project + Cursor setup
+## 9:25 – 9:50: Starter project + Cursor setup
 
 There are two halves to this: first you make your **own copy of the starter on GitHub**, then you bring that copy **down to your laptop**. Both matter, and in that order.
 
@@ -239,7 +239,7 @@ So they're a scratch-space undo button, not a substitute for saving your work. G
 
 Your starter repo also includes **Cursor rules and skills**: instructions the agent reads so it produces consistent, token-based code instead of generic slop. Always-on rules live in `.cursor/rules/` (tokens, Astro, content). Loop-specific skills live in `.cursor/skills/` (work section, migration, make it yours, and more). I'll show you what they are doing so they never feel like magic.
 
-## 10:40 – 10:55: Activity 1: Meet your design system
+## 9:50 – 10:10: Activity 1: Meet your design system
 
 Before you build anything, let's look at the design system that's going to drive it. This will feel familiar, because it's the same idea as variables and styles in Figma.
 
@@ -279,7 +279,7 @@ Here's the good news for right now: the starter already has sensible example tok
 
 Before we move on, feel free to drop in your favorite color as `--accent-9` and later on, you'll start to see that color when we add in more components, hyperlinks, etc.
 
-## 10:55 – 11:20: Activity 2: Build your About page
+## 10:10 – 10:45: Activity 2: Build your About page
 
 Time to make something, and to see the design system working. We're building one page: **your "About Me" page, a simplified, digital version of your resume.** We'll give it a proper home page and move this to `/about` later this afternoon.
 
@@ -297,12 +297,12 @@ git add .               # Stage the changes (pack the box)
 git commit -m "Build my about page"   # Save them (seal and label the box)
 ```
 
-## 11:20 – 11:30: Break
+## 10:45 – 11:00: Break
 
 Grab a coffee or a snack. See you back here in a few!
 
 
-## 11:30 – 11:50: Loop 3: Ship it
+## 11:00 – 11:30: Loop 3: Ship it
 
 Now we put your page on the internet, where anyone can see it.
 
@@ -348,7 +348,7 @@ Watch it go live. That's the whole game: **edit, add, commit, push.** You'll do 
 
 > **Stuck?** This is the fiddliest stretch of the day, and it's almost always sign-in or permissions. Flag me. Nobody moves on until everyone's live.
 
-## 11:50 – 12:00: Debrief: why one page doesn't scale
+## 11:30 – 11:45: Debrief: why one page doesn't scale
 
 Look at what you've got: one page, styled on your tokens, live on the internet. Now imagine adding twelve case studies. Where does the navigation live? What happens when you change your footer? Do you really want to paste it into thirteen files?
 
@@ -363,7 +363,7 @@ git log --oneline --graph   # A clean visual history of my saves
 
 ---
 
-# Lunch (12:00 – 13:00)
+# Lunch (11:45 – 12:45)
 
 Step away from the screen, grab a bite to eat. If there's something you didn't want to ask in front of the group, feel free to DM and I'll get you sorted.
 
@@ -371,7 +371,7 @@ Step away from the screen, grab a bite to eat. If there's something you didn't w
 
 # Afternoon
 
-## 13:00 – 13:30: Loop 4: Components
+## 12:45 – 13:30: Loop 4: Components
 
 Now the payoff for building that page by hand. We take your one page and pull the shared parts out, and the reason becomes obvious the moment you do it.
 
@@ -421,7 +421,7 @@ git commit -m "Add layout, nav, footer, and button components"
 git push
 ```
 
-## 13:30 – 14:10: Loop 5: Content and Projects
+## 13:30 – 14:30: Loop 5: Content and Projects
 
 Now the site gets real. You're going to stop pasting project details into pages by hand, and set up a small **content system** for your work instead.
 
@@ -484,9 +484,9 @@ git commit -m "Add projects collection, work grid, and case study template"
 git push
 ```
 
-## 14:10 – 14:20: Break
+## 14:30 – 14:45: Break
 
-## 14:20 – 14:45: Loop 6: Make it yours
+## 14:45 – 15:30: Loop 6: Make it yours
 
 The moment we set everything up for. Until now your site has worn the example tokens. Now you make it yours, and because every component references the semantic tokens, changing them changes the whole site at once. Change is cheap. That's the entire point.
 
@@ -524,7 +524,7 @@ git commit -m "Set my own design tokens"
 git push
 ```
 
-## 14:45 – 15:00: Loop 7: Ship and share
+## 15:30 – 16:00: Loop 7: Ship and share
 
 **Final deploy.** You know it by now:
 
