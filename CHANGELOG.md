@@ -5,6 +5,39 @@ the top. Version numbers follow [semantic versioning](https://semver.org):
 given `MAJOR.MINOR.PATCH`, a patch is a fix, a minor adds something without
 breaking what exists, and a major changes things in a way that could break.
 
+## [0.2.0] - 2026-08-29
+
+Pilot-session and August workshop updates. Agent guidance is reorganised;
+the lesson plan matches the 29 August schedule; the repo is a GitHub Template.
+
+### Added
+
+- Six loop-specific Cursor skills in `.cursor/skills/`: `work-section`,
+  `make-it-yours`, `mdx-components`, `content-migration`, `deploy`, and
+  `git-workflow`.
+- A short "starter repo at a glance" section in `.cursorrules` that points at
+  the rules and skills tables.
+- Empty placeholders for `src/components/`, `src/layouts/`, and `src/content/`
+  so the workshop folders are ready before attendees build into them.
+- GitHub Template mode so attendees can use "Use this template" instead of
+  forking.
+
+### Changed
+
+- Lesson plan rewritten for the pilot and then retimed for the 29 August
+  workshop day (9:00 AM – 4:00 PM schedule).
+- README and lesson-plan copy tightened for attendees.
+- Deploy guidance moved out of always-on `.cursor/rules/` into the
+  on-demand `deploy` skill; always-on rules stay on tokens, Astro, and
+  content collections.
+- `package-lock.json` refreshed to match current dependency versions.
+
+### Removed
+
+- Duplicate skill drafts that lived under `docs/` (tokens, Astro, content,
+  deploy).
+- `docs/starter-repo-build-spec.md` (internal build notes, not for attendees).
+
 ## [0.1.0] - 2026-07-19
 
 Initial release. The starting point used for the first class.
